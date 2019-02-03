@@ -1,4 +1,4 @@
-import thunk from './middleware/thunk';
+import thunk from 'src/redux/middleware/thunk';
 
 const middleware = [
     thunk

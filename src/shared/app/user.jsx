@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
-import * as actions from './redux/actions/user-actions'
+import * as actions from 'src/redux/actions/user-actions'
 
 class User extends Component {
     static fetchData({ store }) {

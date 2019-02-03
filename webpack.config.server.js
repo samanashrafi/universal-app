@@ -14,7 +14,7 @@ if (!production) {
 const modeWebpack = production ?
     "production" :
     "development";
-    
+
 module.exports = {
     context: srcPath,
     entry: './src/server/server.js',
@@ -73,8 +73,9 @@ module.exports = {
     resolve: {
         alias: {
             src: path.resolve(__dirname, "src"),
-            assets: path.resolve(__dirname, "src/assets")
-
+            assets: path.resolve(__dirname, "src/assets"),
+            redux: path.resolve(__dirname, "src/redux"),
+            shared: path.resolve(__dirname, "src/shared")
         }
     },
     externals: nodeExternals(),

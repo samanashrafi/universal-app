@@ -12,7 +12,7 @@ if (!production) {
 const modeWebpack = production ?
     "production" :
     "development";
-    
+
 module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: {
@@ -69,7 +69,9 @@ module.exports = {
     resolve: {
         alias: {
             src: path.resolve(__dirname, "src"),
-            assets: path.resolve(__dirname, "src/assets")
+            assets: path.resolve(__dirname, "src/assets"),
+            redux2: path.resolve(__dirname, "src/redux"),
+            shared: path.resolve(__dirname, "src/shared")
 
         }
     },

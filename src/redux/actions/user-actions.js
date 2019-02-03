@@ -1,4 +1,4 @@
-import { Types } from '../constants/user-types';
+import { Types } from 'src/redux/constants/user-types';
 import Request from 'axios';
 
 export function getName(id) {

@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from './reducers/combine';
-import middleware from './middleware';
+import reducers from 'src/redux/reducers/combine';
+import middleware from 'src/redux/middleware';
 
 // Grab the state from a global variable injected into the server-generated HTML
 var preloadedState = {};

@@ -2,15 +2,15 @@ import express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import helmet from 'react-helmet';
-import App from '../shared/app/app.jsx';
+import App from 'shared/app/app.jsx';
 const app = express();
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import reducers from '../shared/app/redux/reducers/combine';
+import reducers from 'src/redux/reducers/combine';
 import { StaticRouter as Router, matchPath } from 'react-router';
-import thunk from '../shared/app/redux/middleware/thunk';
-import routeBank from '../shared/routes/routes';
+import thunk from 'src/redux/middleware/thunk';
+import routeBank from 'shared/routes/routes';
 
 app.use('/dist', express.static('./dist'));
 
