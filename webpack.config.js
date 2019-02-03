@@ -1,7 +1,9 @@
 const path = require('path'),
     webpack = require('webpack'),
+    srcPath = path.resolve(__dirname),
+    distPath = path.resolve(__dirname, 'dist'),
     ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+// const PUBLIC_DIR = path.resolve(__dirname, 'dist');
 const production = process.env.NODE_ENV &&
     process.env.NODE_ENV === "production";
 const Dotenv = require('dotenv-webpack');
@@ -14,14 +16,14 @@ const modeWebpack = production ?
     "development";
 
 module.exports = {
-    context: path.resolve(__dirname, './src'),
+    context: srcPath,
     entry: {
-        app: './client/index.js',
+        app: './src/client/index.js',
     },
     output: {
+        // path: PUBLIC_DIR,
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, './dist/assets'),
-        publicPath: '/assets',
+        path: distPath,
     },
     mode: modeWebpack,
     module: {
@@ -74,4 +76,5 @@ module.exports = {
 
         }
     },
+
 }
