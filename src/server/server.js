@@ -80,7 +80,9 @@ function renderFullPage(html, preloadedState, helmet) {
         <link rel="icon" href="/dist/favicon.ico" type="image/ico" />
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
-        ${helmet.link.toString()}
+		${helmet.link.toString()}
+		<link rel="stylesheet" type="text/css" href="/dist/app.css"/>
+
       </head>
       <body>
         <div id="root">${html}</div>

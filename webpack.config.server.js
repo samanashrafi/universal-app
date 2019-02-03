@@ -30,7 +30,7 @@ module.exports = {
                 }],
             }, {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
+                loader: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: ["css-loader", "sass-loader"]
                 })
@@ -45,6 +45,26 @@ module.exports = {
             }
             //loaders for other file types can go here
         ]
+    },
+    plugins: [
+        // new Dotenv(),
+        new ExtractTextPlugin({
+            filename: "app.css"
+        }),
+        // new HtmlWebPackPlugin({
+        //     template: "./src/index.html",
+        //     filename: "./index.html"
+        // }),
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+        // }),
+    ],
+    resolve: {
+        alias: {
+            src: path.resolve(__dirname, "src"),
+            assets: path.resolve(__dirname, "src/assets")
+
+        }
     },
     externals: nodeExternals(),
     devtool: 'source-map'
