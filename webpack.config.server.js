@@ -11,6 +11,7 @@ module.exports = {
         filename: 'server.js'
     },
     target: 'node',
+    mode:"production",
     node: {
         __dirname: false,
         __filename: false

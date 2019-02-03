@@ -11,6 +11,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist/assets'),
         publicPath: '/assets',
     },
+    mode:"production",
     module: {
         rules: [
             {
