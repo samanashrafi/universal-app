@@ -58,6 +58,7 @@ typings/
 .yarn-integrity
 # dist file
 .dist
+.dist/assets
 #  dotenv environment variables file
 # .env
 
