@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Link, Route } from "react-router-dom";
-import RedirectWithStatus from "./redirect-w-status.jsx";
-import Navbar from "./navbar.jsx";
-import routeOptions from "shared/routes/routes";
+import RedirectWithStatus from "client/app/redirect-w-status.jsx";
+import Navbar from "client/app/navbar.jsx";
+import routeOptions from "client/routes/routes";
 import "src/assets/sass/mian.scss";
 
 class App extends Component {

@@ -74,8 +74,7 @@ module.exports = {
         alias: {
             src: path.resolve(__dirname, "src"),
             assets: path.resolve(__dirname, "src/assets"),
-            redux: path.resolve(__dirname, "src/redux"),
-            shared: path.resolve(__dirname, "src/shared")
+            client: path.resolve(__dirname, "src/client"),
         }
     },
     externals: nodeExternals(),

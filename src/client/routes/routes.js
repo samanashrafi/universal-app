@@ -1,6 +1,5 @@
-import Navbar from '../app/navbar.jsx';
-import Home from '../app/home.jsx';
-import User from '../app/user.jsx';
+import Home from 'client/app/home.jsx';
+import User from 'client/app/user.jsx';
 
 export default {
     routes: [
