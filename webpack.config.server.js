@@ -4,6 +4,17 @@ const nodeExternals = require('webpack-node-externals'),
     distPath = path.resolve(__dirname, 'dist'),
     ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const production = process.env.NODE_ENV &&
+    process.env.NODE_ENV === "production";
+const Dotenv = require('dotenv-webpack');
+if (!production) {
+    require('dotenv').config();
+}
+
+const modeWebpack = production ?
+    "production" :
+    "development";
+    
 module.exports = {
     context: srcPath,
     entry: './src/server/server.js',
@@ -12,7 +23,7 @@ module.exports = {
         filename: 'server.js'
     },
     target: 'node',
-    mode: "production",
+    mode: modeWebpack,
     node: {
         __dirname: false,
         __filename: false
@@ -47,7 +58,7 @@ module.exports = {
         ]
     },
     plugins: [
-        // new Dotenv(),
+        new Dotenv(),
         new ExtractTextPlugin({
             filename: "app.css"
         }),

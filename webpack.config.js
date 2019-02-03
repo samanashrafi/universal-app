@@ -2,6 +2,17 @@ const path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const production = process.env.NODE_ENV &&
+    process.env.NODE_ENV === "production";
+const Dotenv = require('dotenv-webpack');
+if (!production) {
+    require('dotenv').config();
+}
+
+const modeWebpack = production ?
+    "production" :
+    "development";
+    
 module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: {
@@ -12,7 +23,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist/assets'),
         publicPath: '/assets',
     },
-    mode: "production",
+    mode: modeWebpack,
     module: {
         rules: [{
                 test: /\.(js|jsx)$/,
@@ -43,7 +54,7 @@ module.exports = {
         ]
     },
     plugins: [
-        // new Dotenv(),
+        new Dotenv(),
         new ExtractTextPlugin({
             filename: "app.css"
         }),
