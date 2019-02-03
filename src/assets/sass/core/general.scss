@@ -1,0 +1,220 @@
+// html tag
+
+body {
+  font-family: $font-family;
+  color: $color-body;
+  background: #f1f8f8;
+  font-size: 0.9em;
+  direction: rtl;
+  float: right;
+  width: 100%;
+  line-height: 1.33em;
+
+  @include bp(underdesktop) {
+    font-size: 0.8em;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $color-body;
+  @include transition(0.3s);
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+h6 {
+  font-size: 1;
+}
+
+.t-c {
+  text-align: center;
+}
+
+.t-r {
+  text-align: right;
+}
+
+.t-b {
+  text-align: left;
+}
+
+input,
+textarea,
+select,
+option,
+button {
+  font-family: $font-family;
+  border: none;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: darkgray;
+}
+
+.color-primary {
+  color: $color-primary;
+}
+
+.color-secondary {
+  color: $color-secondary;
+}
+
+//containers
+
+.container-center {
+  width: 80%;
+  margin: auto;
+  display: table;
+
+  @include bp(mobile) {
+    width: 95%;
+  }
+
+  @include bp(undertablet) {
+    width: 90%;
+  }
+
+  @include bp(underdesktop) {
+    width: 90%;
+  }
+}
+
+.container-width {
+  width: 100%;
+  float: right;
+}
+
+.container-main {
+  // width: calc(100% - #{$aside-padding} - 60px);
+
+  padding: 20px 0px;
+
+  @include bp(underdesktop) {
+    padding: 20px 0px;
+  }
+}
+
+// position
+.position-relative-margin {
+  position: relative;
+  margin-right: -$margin-size;
+}
+
+//margin
+
+.m-t {
+  margin-top: $margin-top;
+}
+
+.m-r {
+  margin-right: $margin-right;
+}
+
+.m-b {
+  margin-bottom: $margin-bottom;
+}
+
+.m-l {
+  margin-left: $margin-left;
+}
+
+.p-t {
+  padding-top: $padding-top;
+}
+
+.p-r {
+  padding-right: $padding-right;
+}
+
+.p-b {
+  padding-bottom: $padding-bottom;
+}
+
+.p-l {
+  padding-left: $padding-left;
+}
+
+.border-none {
+  border: none;
+}
+
+.padding-none {
+  padding: none;
+}
+
+.margin-none {
+  margin: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.c-not-allowed {
+  cursor: not-allowed !important;
+}
+
+.spinners {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+
+  &:after {
+    content: " ";
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    border-color: #ddd transparent #ddd transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  &.drop-down {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+  }
+}
+
+/*sweet alert*/
+
+.swal-button-container {
+
+  margin: 0 auto;
+  display: table;
+  text-align: center;
+}

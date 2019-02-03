@@ -1,0 +1,109 @@
+.academy-list {
+  background: #fcfcfc;
+
+  .home-search {
+    background: transparent;
+    padding: 0;
+  }
+
+  .body {
+    // margin-right: -$padding-size;
+    // margin-left: -$padding-size;
+    display: flex;
+    float: right;
+    width: 100%;
+
+    .aside-filter,
+    .grid-list {
+      float: right;
+    }
+
+    .aside-filter {
+      width: calc(30% - 20px);
+      margin-left: 20px;
+
+      li {
+        margin-bottom: $margin-size;
+        border: 1px solid $border-color;
+        background: #fff;
+        overflow: hidden;
+        @include borderRadius(7px);
+        @include transition(0.3s);
+
+        .header {
+          padding: 5px;
+          border: 1px solid $border-color;
+
+          span {
+            &:nth-child(1) {
+              font-size: 1.3em;
+              position: relative;
+              top: 3px;
+            }
+
+            &:nth-child(2) {
+              margin-right: 5px;
+              font-size: 1.2em;
+              font-weight: 600;
+            }
+
+            &:nth-child(3) {
+              float: left;
+              position: relative;
+              top: 7px;
+            }
+          }
+        }
+
+        &.open .list {
+          display: block;
+        }
+
+        .list {
+          display: none;
+          padding: 5px;
+        }
+      }
+    }
+
+    .grid-list {
+      width: 70%;
+
+      .box {
+        display: block;
+        margin-right: -20px;
+
+        .item {
+          float: right;
+          width: calc(33.33% - 20px);
+          background: #fff;
+          padding: 5px;
+          height: 270px;
+          margin-right: $margin-size;
+          border: 1px solid #efefef;
+          overflow: hidden;
+          @include borderRadius(7px);
+          @include transition(0.3s);
+          @include box-shadow(0 0 7px 1px #efefef);
+          &:hover{
+            @include box-shadow(0px 3px 19px 3px #efefef);
+          }
+          .img {
+            height: 170px;
+            background: rgb(245, 245, 245);
+            margin-bottom: 12px;
+            @include borderRadius(7px);
+           
+            
+          }
+
+          h2 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: $color-primary
+          }
+        }
+      }
+    }
+  }
+}

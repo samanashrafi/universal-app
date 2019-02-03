@@ -1,0 +1,237 @@
+header {
+  background: #fff;
+  padding: 15px 0px;
+  min-width: 320px;
+  border-top: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  // width: calc(100% - #{$aside-padding} - 40px);
+  @include transition(0.3s);
+  @include box-shadow(0 0 12px 2px #f1f1f1);
+
+  #hamburger-menu {
+    display: none;
+    float: right;
+  }
+
+
+  .user-login {
+    position: relative;
+    float: left;
+    padding: 11px 8px 0 0;
+    font-weight: 600;
+
+    // border-right: 1px solid $border-color;
+    @include bp(underdesktop) {
+      padding: 0;
+    }
+
+    i {
+      color: $color-primary;
+      font-size: $icon-size;
+      position: relative;
+      top: 5px;
+    }
+
+  }
+
+  .menu {
+    float: right;
+    margin: 8px 15px 0 0;
+    font-weight: 600;
+    @include transition(0.3s);
+
+    @include bp(underdesktop) {
+
+      width: 100%;
+      height: calc(100% - 48px);
+      position: fixed;
+      z-index: 999;
+      margin: 0;
+      top: 48px;
+      right: 0;
+      background: rgba(85, 85, 85, 0.26);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+
+      .overley {
+        @include translate3d(0, 0, 0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+    }
+
+    .overley {
+
+      @include bp(underdesktop) {
+        width: 230px;
+        z-index: 999;
+        position: fixed;
+        height: calc(100% - 48px);
+        z-index: 998;
+        top: 48px;
+        right: 0;
+        padding: 10px;
+        background: #fbfbfb;
+        opacity: 0;
+        visibility: hidden;
+        border-top: 1px solid $border-color;
+        border-left: 1px solid $border-color;
+        @include transition(0.5s);
+        @include translate3d(230px, 0, 0);
+      }
+
+    }
+
+    li {
+      float: right;
+      position: relative;
+      padding-bottom: 20px;
+      @include transition(0.3s);
+
+      @include bp(underdesktop) {
+        width: 100%;
+        padding-bottom: 10px;
+
+      }
+
+      a,
+      span {
+        margin: 0px 0 0 8px;
+        padding: 10px 0px 0 15px;
+        float: right;
+        @include transition(0.3s);
+        &:hover {
+          color: $color-primary;
+        }
+
+        @include bp(underdesktop) {
+          width: 100%;
+          margin: 0;
+          padding-left: 0;
+        }
+
+        i {
+          position: relative;
+          top: 5px;
+          right: 5px;
+          color: $color-primary;
+
+          @include bp(underdesktop) {
+            right: 0;
+            float: left;
+          }
+
+        }
+      }
+
+      &:hover .menu-dropdown {
+        opacity: 1;
+        visibility: visible;
+        top: 40px;
+      }
+
+      .menu-dropdown {
+        position: absolute;
+        top: 35px;
+        right: 0;
+        min-width: 200px;
+        opacity: 0;
+        z-index: 1;
+        visibility: hidden;
+        background: #f9f9f9;
+        @include transition(0.3s);
+        @include borderRadius(8px);
+
+        li {
+          width: 100%;
+          padding: 0;
+          border-bottom: 1px solid $border-color;
+
+          a {
+            padding: 5px;
+            width: 100%;
+            font-weight: 500;
+          }
+
+          &:last-child {
+            border-bottom: none;
+
+          }
+        }
+
+        @include bp(underdesktop) {
+          position: static;
+          display: none; 
+          opacity: 1;
+          visibility: visible;
+          background: #bbb;
+          float: right;
+          width: 100%;
+          @include borderRadius(0px);
+
+
+        }
+      }
+    }
+  }
+
+  .select-city {
+    float: left;
+    margin: 8px 0 0 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid $border-color;
+    display: none;
+    @include borderRadius(25px);
+  }
+
+  .logo {
+    float: right;
+    width: 240px;
+    border-left: 1px solid $border-color;
+    padding: 0 0 0 10px;
+    text-align: center;
+
+    @include bp(largescreenmax) {
+      border-left: none;
+      width: auto;
+    }
+
+    img {
+      width: 78px;
+      float: right;
+
+      @include bp(underdesktop) {
+        width: 40px;
+      }
+    }
+
+    span {
+      color: $color-body;
+      position: relative;
+      top: 10px;
+      font-size: 0.8em;
+
+      @include bp(largescreenmax) {
+        display: none;
+      }
+    }
+  }
+
+  @include bp(upper1090max) {
+    padding: 10px 0px;
+
+  }
+
+  @include bp(underdesktop) {
+    #hamburger-menu {
+      display: block;
+    }
+  }
+}

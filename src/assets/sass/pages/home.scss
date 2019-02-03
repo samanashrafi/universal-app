@@ -1,0 +1,81 @@
+$width-btn-filter: 106px;
+
+.home-search {
+  background: #eee;
+  padding: 20px 0;
+
+  .filter {
+    position: relative;
+    margin: 20px 0;
+    background: #fff;
+    padding: 5px;
+    display: flex;
+    padding-left: $width-btn-filter;
+    // background-image: linear-gradient(to right bottom, #33bbed, #00c7cd, #32cb88, #a1c239, #faa61a);
+
+    @include borderRadius(25px);
+
+    .form-select {
+      position: relative;
+      width: calc(33.33% - 5px);
+      margin-left: 5px;
+      float: right;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid $border-color;
+      @include borderRadius(25px);
+
+      input,
+      select {
+        width: 100%;
+        float: right;
+      }
+
+      .search-list {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background: #fff;
+        padding: 16px;
+        max-height: 217px;
+        overflow-x: auto;
+        width: 100%;
+        z-index: 1;
+        @include borderRadius(25px);
+        &::-webkit-scrollbar {
+          width: 12px; /* for vertical scrollbars */
+          height: 12px; /* for horizontal scrollbars */
+        }
+
+        &::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.5);
+        }
+        li {
+          border-bottom: 1px solid $border-color;
+          padding: 0 0 5px 0;
+          margin: 0 0 5px 0;
+          @include containerWidth();
+          &.not-found,&:last-child{
+            padding: 0px;
+            margin: 0px;
+            border: none;
+          }
+
+          a {
+            margin: 0 0 10px 0;
+          }
+        }
+      }
+    }
+
+    .btn {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+  }
+}

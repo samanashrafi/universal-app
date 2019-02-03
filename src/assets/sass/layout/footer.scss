@@ -1,0 +1,103 @@
+footer {
+    background: #f6f6f7;
+
+    .newsletters {
+        background: $color-secondary;
+        padding: 20px 0;
+        color: #fff;
+
+        p {
+            font-size: 1.8em;
+            text-align: center;
+            margin: 0 0 20px 0;
+            @include bp(undertablet){
+                font-size: 1.5em;
+
+            }
+            @include bp(mobile){
+                font-size: 1.3em;
+
+                &:first-child{
+                    display: none
+                }
+            }
+        }
+
+        .form {
+            width: 40%;
+            display: table;
+            margin: 0 auto;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            @include borderRadius(25px);
+
+            input {
+                padding: 11px 35px;
+                @include containerWidth();
+            }
+
+            .btn-newsletters {
+                position: absolute;
+                left: 3px;
+                top: 3px;
+            }
+            @include bp(underdesktop){
+                width: 70%;
+            }
+            @include bp(undertablet){
+                width: 60%;
+            }
+            @include bp(mobile){
+
+                width: 90%;
+            }
+        }
+
+
+    }
+
+    .body {
+        padding: 20px 0;
+
+        h5 {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+
+        }
+
+        li {
+            margin: 0 0 10px 0;
+
+            a {
+                display: block;
+                padding: 2px 7px;
+                border-right: 1px solid $color-primary;
+            }
+        }
+        .namad img{
+            float: right;
+            width: 110px;
+        }
+        @include bp(largescreenmax){
+            display: none;
+        }
+    }
+    .copy-write{
+        padding: 20px 0;
+        background: #dcddde;
+        font-weight: 600;
+        text-align: center;
+        .social{
+            display: none;
+            float: left;
+            font-size: 1.5em;
+            a{
+                float: left;
+                margin: 0 20px 0 0;
+
+            }
+        }
+    }
+}

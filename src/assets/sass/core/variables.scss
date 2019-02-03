@@ -1,0 +1,160 @@
+// artemisia Colors
+
+$color-navy: #231f20; //#272c36;
+$color-navy-light: #f3f7fa;
+$color-artemisia-gray: #6d6e71;
+$color-body:#6d6e71;
+$color-red: #ef4123; //#c22028
+$color-error: #c22028;
+$color-green: #21c64f;
+
+$color-primary: #fcaf17;
+$color-secondary: #1d3455;
+
+$color-blue: rgb(75, 178, 230);
+$color-light-blue: #e4f2f4;
+$color-white: #fff;
+$color-black: #000;
+$color-yellow: #fcb146;
+$color-note: mix($color-yellow, $color-white, 30%);
+$color-orange: #f79905;
+$color-gray-dlight: #ddd;
+$color-gray-light: #ccc;
+$color-gray-superlight: #f8f8f8; //#e4e4e4
+$color-gray-border: #eee;
+$color-gray-medium: #bdbdbd;
+$color-gray-dark: #333;
+$color-green-light: #11c35e;
+$color-brown: #563a22;
+$fidilio: #770c0c;
+
+// Social Colors
+$color-facebook: #3b5998;
+$color-instagram: linear-gradient(
+  266deg,
+  #4e60d3,
+  #913baf 35%,
+  #d52d88 68%,
+  #f26d4f
+);
+$color-googleplus: #d34836;
+$color-linkedin: #007bb6;
+$color-twitter: #1da1f2;
+$color-telegram: #2ca5e0;
+
+$font-family: "iranyekan", Tahoma, Helvetica, Sans-serif;
+$bg-color: $color-white;
+$bg-gray: #f8f8f8;
+$text-color: $color-secondary;
+$font-base: 16 !default;
+$link-color: $color-primary;
+$link-color-hover: darken($link-color, 20%);
+$input-color-placeholder: #bbb;
+
+// Dots
+$dot-width: 8px;
+$dot-height: 8px;
+$dot-margin: 2px;
+$dot-background: $color-gray-light;
+$dot-background-active: $color-red;
+
+//aside
+$aside-padding: 256px;
+
+// containers
+$container-main: $aside-padding + 30px;
+
+//border
+$border-color: #e6e7e8;
+$boder-radius:25px;
+
+// icon
+$icon-size:1.5em;
+
+//margin & padding
+$margin-size:20px;
+$margin: $margin-size;
+$margin-top:$margin-size;
+$margin-right: $margin-size;
+$margin-bottom: $margin-size;
+$margin-left: $margin-size;
+
+$padding-size:20px;
+$padding: $padding-size;
+$padding-top:$padding-size;
+$padding-right: $padding-size;
+$padding-bottom: $padding-size;
+$padding-left: $padding-size;
+
+
+
+// alo-icon
+$icomoon-font-family: "k-icon" !default;
+$icomoon-font-path: "fonts" !default;
+
+$k-angle-down: "\e900";
+$k-angle-left: "\e901";
+$k-angle-right: "\e902";
+$k-angle-up: "\e903";
+$k-bars: "\e904";
+$k-bell: "\e905";
+$k-bin: "\e906";
+$k-buromobelexperte: "\e907";
+$k-calendar-1: "\e909";
+$k-camera: "\e90a";
+$k-camera-1: "\e90b";
+$k-chat: "\e90c";
+$k-chat1: "\e90d";
+$k-check-box: "\e90e";
+$k-clock: "\e90f";
+$k-close: "\e910";
+$k-cloud: "\e911";
+$k-cloud-download-alt: "\e912";
+$k-cloud-upload-alt: "\e913";
+$k-computer-screen: "\e914";
+$k-cursor-arrow-1: "\e915";
+$k-Custom: "\e916";
+$k-data-download: "\e917";
+$k-document: "\e918";
+$k-edit: "\e919";
+$k-file-new-1: "\e91a";
+$k-file-new-2: "\e91b";
+$k-file-notes-document: "\e91c";
+$k-file-notes-new: "\e91d";
+$k-file-office-graph: "\e91e";
+$k-folder: "\e91f";
+$k-headphones-alt: "\e920";
+$k-heart: "\e921";
+$k-home: "\e922";
+$k-image: "\e923";
+$k-image1: "\e924";
+$k-images: "\e925";
+$k-keyboard: "\e926";
+$k-lock-1: "\e927";
+$k-lock-unlock-1: "\e928";
+$k-mail: "\e929";
+$k-map-marker-alt: "\e92a";
+$k-megaphone: "\e92b";
+$k-megaphone1: "\e92c";
+$k-mobile: "\e92d";
+$k-music: "\e92e";
+$k-next1: "\e92f";
+$k-notifications: "\e930";
+$k-paperclip: "\e931";
+$k-plus-square: "\e932";
+$k-Previous: "\e933";
+$k-refresh: "\e934";
+$k-search: "\e935";
+$k-share-alt: "\e936";
+$k-share-alt1: "\e937";
+$k-shopping-bag: "\e938";
+$k-shopping-basket: "\e939";
+$k-star: "\e93a";
+$k-stopwatch: "\e93b";
+$k-tag: "\e93c";
+$k-undo-alt: "\e93d";
+$k-user: "\e93e";
+$k-Wallet: "\e93f";
+
+
+

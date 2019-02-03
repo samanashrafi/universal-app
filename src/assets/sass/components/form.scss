@@ -1,0 +1,426 @@
+.form-group {
+  position: relative;
+  margin-bottom: $margin-size + 5px;
+  background: #f4fcfe;
+  @include containerWidth();
+  @include borderRadius(5px);
+
+  &.shake {
+    animation-name: shake;
+    animation-duration: 0.9s;
+    animation-timing-function: ease-out;
+
+  }
+
+  .from-input {
+    position: relative;
+    // background: #f7f7f7;
+    padding: 24px 15px;
+    overflow: hidden;
+
+    border-right: 2px solid #eee;
+    border-left: 2px solid #eee;
+    border-bottom: 1px solid #f7f7f7;
+    @include containerWidth();
+    @include borderRadius(5px);
+    @include transition(0.3s);
+
+    .label {
+      position: absolute;
+      top: 15px;
+      right: 40px;
+      @include transition(0.3s);
+    }
+
+    i {
+      position: absolute;
+      overflow: hidden;
+      top: -2px;
+      right: 0;
+      font-size: 2em;
+      padding: 14px 10px;
+      color: #ddd;
+      float: left;
+      float: right;
+      cursor: pointer;
+      @include borderRadiusAll(5px, 0px, 0px, 5px);
+      @include transition(0.3s);
+    }
+
+    input {
+      position: absolute;
+      top: 13px;
+      right: 0px;
+      padding-right: 40px;
+      padding-left: 20px;
+      outline: none;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+      font-weight: bold;
+      @include transition(0.3s);
+      @include containerWidth();
+    }
+
+    &.error {
+      border-right: 2px solid rgb(255, 73, 73);
+      border-left: 2px solid rgb(255, 73, 73);
+    }
+
+    &.is-focus,
+    &:focus-within {
+      border-right: 2px solid #ddd;
+      border-left: 2px solid #ddd;
+    }
+
+    &.is-focus i,
+    &:focus-within i {
+      color: #ccc;
+    }
+
+    &.is-focus .label,
+    &:focus-within .label {
+      top: 2px;
+      font-size: 0.8em;
+    }
+
+    &.is-focus input,
+    &:focus-within input {
+      top: 16px;
+    }
+  }
+
+  .from-select {
+    position: relative;
+    // background: #f7f7f7;
+    padding: 24px 15px;
+    border-right: 2px solid #eee;
+    border-left: 2px solid #eee;
+    border-bottom: 1px solid #f7f7f7;
+    cursor: pointer;
+
+    @include containerWidth();
+    @include borderRadius(5px);
+    @include transition(0.3s);
+
+    .i {
+      position: absolute;
+      overflow: hidden;
+      top: -2px;
+      font-size: 2em;
+      padding: 14px 10px;
+      color: #ddd;
+      float: left;
+      float: right;
+      cursor: pointer;
+      @include borderRadiusAll(5px, 0px, 0px, 5px);
+      @include transition(0.3s);
+
+      &.first-child {
+        right: 0;
+      }
+
+      &.last-child {
+        left: 0;
+        font-size: 3em;
+        padding: 0;
+        top: 7px;
+      }
+
+      &.rotate {
+        transform: rotate(180deg);
+        left: 0;
+      }
+    }
+
+    .header {
+      position: absolute;
+      top: 15px;
+      right: 0px;
+      padding-right: 40px;
+      outline: none;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+
+      // font-weight: bold;
+      @include transition(0.3s);
+      @include containerWidth();
+    }
+
+    &.error {
+      border-right: 2px solid rgb(255, 73, 73);
+      border-left: 2px solid rgb(255, 73, 73);
+    }
+
+    &.is-focus,
+    &:focus-within {
+      border-right: 2px solid #eee;
+      border-left: 2px solid #eee;
+
+    }
+
+    &.is-focus .first-child,
+    &.is-focus .last-child {
+      color: #ccc;
+    }
+
+    .list {
+      position: absolute;
+      top: 45px;
+      right: -2px;
+      z-index: 9999;
+      background: #f4fcfe;
+      // background: #f7f7f7;
+      padding: 0px 40px;
+      padding-bottom: 10px;
+      border: 2px solid #eee;
+      border-top: none;
+      // font-weight: bold;
+      width: calc(100% + 4px);
+      max-height: 120px;
+      float: right;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        width: 12px;
+        /* for vertical scrollbars */
+        height: 12px;
+        /* for horizontal scrollbars */
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      @include borderRadius(0 0 5px 5px);
+      @include transition(0.3s);
+
+      .item {
+        position: relative;
+        margin-bottom: 5px;
+
+        &.active,
+        &:hover {
+          font-weight: 600;
+        }
+
+        i {
+          position: absolute;
+          top: -4px;
+          right: -31px;
+          font-size: 2em;
+        }
+      }
+
+
+    }
+
+  }
+
+
+
+  .form-file {
+    position: relative;
+    // background: #f7f7f7;
+    padding: 24px 15px;
+    height: 220px;
+    overflow: hidden;
+    border-right: 2px solid #eee;
+    border-left: 2px solid #eee;
+    border-bottom: 1px solid #f7f7f7;
+    @include containerWidth();
+    @include borderRadius(5px);
+    @include transition(0.3s);
+
+    .label {
+      position: absolute;
+      top: 15px;
+      right: 40px;
+      @include transition(0.3s);
+    }
+
+    .first-child {
+      position: absolute;
+      overflow: hidden;
+      top: -2px;
+      right: 0;
+      font-size: 2em;
+      padding: 14px 10px;
+      color: #ddd;
+      float: left;
+      float: right;
+      @include borderRadiusAll(5px, 0px, 0px, 5px);
+      @include transition(0.3s);
+    }
+
+    .img-cover,
+    .icon-cover {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
+    .img-cover {
+      img {
+        max-width: 150px;
+        max-height: 100px;
+        margin: 0 auto;
+        border: 1px solid $border-color;
+        @include borderRadius(5px);
+      }
+
+      div {
+        display: block;
+        text-align: center;
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 0.8em;
+      }
+    }
+
+    .icon-cover {
+      i {
+        font-size: 10em;
+        color: #ccc;
+      }
+    }
+
+    input {
+      display: none;
+    }
+
+    .btn {
+      background: $color-gray-medium;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      @include borderRadius(0px);
+    }
+
+    &.error {
+      border-right: 2px solid rgb(255, 73, 73);
+      border-left: 2px solid rgb(255, 73, 73);
+    }
+
+
+
+    &.is-focus,
+    &:focus-within {
+      border-right: 2px solid #eee;
+      border-left: 2px solid #eee;
+      box-shadow: 0 0 12px 2px #efefef;
+    }
+
+    &.is-focus i,
+    &:focus-within i {
+      color: #ccc;
+    }
+
+  }
+
+  .form-map {
+    position: relative;
+    // background: #f7f7f7;
+    height: 220px;
+    overflow: hidden;
+    border-right: 2px solid #eee;
+    border-left: 2px solid #eee;
+    border-bottom: 1px solid #f7f7f7;
+    @include containerWidth();
+    @include borderRadius(5px);
+    @include transition(0.3s);
+
+    .label {
+      position: absolute;
+      top: 15px;
+      right: 40px;
+      @include transition(0.3s);
+    }
+
+    .first-child {
+      position: absolute;
+      overflow: hidden;
+      top: -2px;
+      right: 0;
+      font-size: 2em;
+      padding: 14px 10px;
+      color: #ddd;
+      float: left;
+      float: right;
+      @include borderRadiusAll(5px, 0px, 0px, 5px);
+      @include transition(0.3s);
+    }
+
+    .img-cover,
+    .icon-cover {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
+    .img-cover {
+      img {
+        max-width: 150px;
+        max-height: 100px;
+        margin: 0 auto;
+        border: 1px solid $border-color;
+        @include borderRadius(5px);
+      }
+
+      div {
+        display: block;
+        text-align: center;
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 0.8em;
+      }
+    }
+
+    .btn {
+      background: $color-gray-medium;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      @include borderRadius(0px);
+    }
+
+    &.error {
+      border-right: 2px solid rgb(255, 73, 73);
+      border-left: 2px solid rgb(255, 73, 73);
+    }
+
+    &.is-focus,
+    &:focus-within {
+      border-right: 2px solid #eee;
+      border-left: 2px solid #eee;
+    }
+
+    &.is-focus i,
+    &:focus-within i {
+      color: #ccc;
+    }
+  }
+
+  .invalid-feedback {
+    position: absolute;
+    bottom: -19px;
+    left: 0;
+    color: rgb(255, 73, 73);
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,60 @@
+.btn {
+  background: $color-primary;
+  padding: 8px 30px;
+  color: white;
+  outline: none;
+  border: none;
+  display: table;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+  font-weight: 600;
+  @include borderRadius(25px);
+
+  &.clicked {
+    span {
+      display: none;
+    }
+    .spinner {
+      display: block;
+    }
+  }
+
+  .spinner {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    // top: 8px;
+    display: table;
+    margin: 0 auto;
+    // opacity: 0;
+    display: none;
+  }
+
+  .double-bounce1,
+  .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include borderRadius(50%);
+    @include animation(sk-bounce 2s infinite ease-in-out);
+  }
+
+  .double-bounce2 {
+    @include animation-delay(-1s);
+  }
+
+  @include keyframes(sk-bounce) {
+    0%,
+    100% {
+      @include scale(0);
+    }
+    50% {
+      @include scale(1);
+    }
+  }
+}

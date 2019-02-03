@@ -1,0 +1,53 @@
+.partners {
+  margin: $margin-size 0;
+
+  h2 {
+    font-weight: bold;
+    margin-bottom: $margin-bottom;
+  }
+
+  .boxes {
+    float: right;
+    width: 100%;
+    min-height: 400px;
+    background: #fff;
+    padding: $padding-size;
+    @include borderRadius(7px);
+    @include box-shadow(0 0 7px 1px #efefef);
+
+    .boxes-half {
+      width: calc(50% - #{$margin-size});
+      margin-right: $margin-size;
+      float: right;
+
+      @include bp(undertablet) {
+
+        margin: 0;
+        width: 100%;
+
+      }
+    }
+
+    @include bp(undertablet) {
+      .position-relative-margin {
+        margin: 0;
+      }
+    }
+  }
+
+  
+
+  .leaflet {
+    float: right;
+    width: 100%;
+    height: 180px;
+    margin-top: 40px;
+    overflow: hidden;
+
+    .leaflet-container {
+      height: 400px;
+      width: 100%;
+      position: static !important;
+    }
+  }
+}
