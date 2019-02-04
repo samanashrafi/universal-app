@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const Test = ({ match }) => (
+const AcademyDatails = ({ match }) => (
     <div>
       <h3>Grand Child</h3>
       <div>{match.params.id}</div>
@@ -8,4 +8,4 @@ const Test = ({ match }) => (
   );
 
 
-export default Test;
+export default AcademyDatails;
