@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { searchFetch} from 'src/redux/actions/searchAction.js'
+import { searchFetch} from 'src/redux/actions/search-action.js'
 import {
   withRouter
 } from 'react-router-dom'

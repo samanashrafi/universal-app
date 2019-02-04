@@ -16,14 +16,15 @@ const modeWebpack = production ?
     "development";
 
 module.exports = {
-    context: srcPath,
+    // context: distPath,
     entry: {
         app: './src/client/index.js',
     },
-    output: {
-        // path: PUBLIC_DIR,
-        filename: '[name].bundle.js',
+     output: {
+        filename: 'client.js',
         path: distPath,
+        publicPath: '/dist/',
+        
     },
     mode: modeWebpack,
     module: {
@@ -76,5 +77,8 @@ module.exports = {
 
         }
     },
-
+    node: {
+        module: 'empty',
+        fs: 'empty'
+    }
 }

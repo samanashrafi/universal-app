@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import Search from "src/client/app/home/Search.jsx";
+ import Search from "src/client/app/home/Search.jsx";
 
 class Home extends Component {
   static fetchData({ store }) {
@@ -13,7 +13,6 @@ class Home extends Component {
           <meta charSet="utf-8" />
           <title>Home</title>
         </Helmet>
-            sss
         <Search />
       </div>
     );

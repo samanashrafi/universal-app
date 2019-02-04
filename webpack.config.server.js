@@ -20,7 +20,8 @@ module.exports = {
     entry: './src/server/server.js',
     output: {
         path: distPath,
-        filename: 'server.js'
+        filename: 'server.js',
+        publicPath: '/dist/'
     },
     target: 'node',
     mode: modeWebpack,
