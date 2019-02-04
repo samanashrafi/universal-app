@@ -38,6 +38,7 @@
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "prop-types": "^15.6.2",
+    "query-string": "^6.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.1.3",
