@@ -2,6 +2,7 @@ import Home from 'client/app/home.jsx';
 import User from 'client/app/user.jsx';
 import AcademyDetails from 'client/app/academydetails/AcademyDetails.jsx';
 import AcademyList from 'client/app/academylist/AcademyList.jsx';
+import Partners from 'client/app/Partners.jsx';
 
 
 
@@ -14,6 +15,11 @@ export default {
         {
             path: '/user',
             component: User,
+            exact: true
+        },
+        {
+            path: '/partner',
+            component: Partners,
             exact: true
         },
         {
