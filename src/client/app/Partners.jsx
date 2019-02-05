@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Validator from "validator";
-import $ from "jquery";
+// import $ from "jquery";
 import SweetAlert from "sweetalert";
 import axios from "axios";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
@@ -9,15 +9,7 @@ import SelectFieldGroup from "client/app/common/SelectFieldGroup";
 import UpLoadFile from "client/app/common/UpLoadFile";
 import { isEmpty } from "client/app/common/helpers";
 import { apiUrl } from "client/routes/apiUrl";
-var MapFieldGroup;
-// import MapFieldGroup from "client/app/common/MapFieldGroup";
-// if (process.env.BROWSER) {
-//   console.log("BROWSER is ok");
-
-//   // var L = require("leaflet");
-//   var Map = require("client/app/common/MapFieldGroup").Map;
-
-// }
+import MapFieldGroup from "client/app/common/MapFieldGroup";
 
 const isBrowser = typeof window !== "undefined";
 
@@ -99,9 +91,9 @@ class Partners extends Component {
     return new RegExp("(.*?)." + type + "$").test(value);
   }
   componentDidMount() {
-    if (isBrowser) {
-      MapFieldGroup = require("client/app/common/MapFieldGroup");
-    }
+    // if (isBrowser) {
+    //   MapFieldGroup = require("client/app/common/MapFieldGroup");
+    // }
   }
   componentWillMount() {
     //   if(isBrowser){

@@ -20,11 +20,11 @@ module.exports = {
     entry: {
         app: './src/client/index.js',
     },
-     output: {
+    output: {
         filename: 'client.js',
         path: distPath,
         publicPath: '/dist/',
-        
+
     },
     mode: modeWebpack,
     module: {
@@ -65,6 +65,12 @@ module.exports = {
         //     template: "./src/index.html",
         //     filename: "./index.html"
         // }),
+        new webpack.ProvidePlugin({
+            'React': 'react',
+            '$': 'jquery',
+            'ReactDOM': 'react-dom',
+
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
             'process.env.BROWSER': JSON.stringify(true),

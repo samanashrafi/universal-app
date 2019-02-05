@@ -1,68 +1,64 @@
 import React, { Component } from "react";
-// import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 const isBrowser = typeof window !== "undefined";
-let L, Map, TileLayer, Marker, Popup;
-// if (isBrowser) {
-//   console.log(window);
-//   console.log(isBrowser);
+if (isBrowser) {
 
-//   var L = require("leaflet");
-//   var Map = require("react-leaflet").Map;
-//   var TileLayer = require("react-leaflet").TileLayer;
-//   var Marker = require("react-leaflet").Marker;
-//   var Popup = require("react-leaflet").Popup;
-// }
+
+  var L = require("leaflet");
+  var Map = require("react-leaflet").Map;
+  var TileLayer = require("react-leaflet").TileLayer;
+  var Marker = require("react-leaflet").Marker;
+  var Popup = require("react-leaflet").Popup;
+}
 class MapFieldGroup extends Component {
-  // handleClick(e) {
-  //     // debugger
-  //     let {viewport} = this.refs.refMap;
-  //     let {zoom} = this.refs.refMap.viewport;
-  //     if (zoom == undefined) {
-  //         zoom = 13;
-  //     }
-  //     //this.refs.refMap.viewport;
-  //     if (e.latlng != null) {
-  //         this.setState({
-  //             hasLocation: true,
-  //             lat: e.latlng["lat"],
-  //             lng: e.latlng["lng"],
-  //             zoom: zoom,
-  //             viewPort: viewport
-  //         });
-  //         console.log(e.latlng["lat"], e.latlng["lng"], zoom)
-  //         this.props.selectLatLng(this.state.lat, this.state.lng)
-  //     }
-  // };
-  // onZoomLevelsChange(e){
-  //     // debugger
-  //     let {viewport} = this.refs.refMap;
-  //     this.setState({
-  //         viewPort: viewport
-  //     });
-  //     console.log(viewport)
-  // }
+    constructor(props) {
+        super(props);
+        this.state = {
+          hasLocation: false,
+          lat: 35.699533,
+          lng: 51.378896,
+          viewPort: {},
+          zoom: 13,
+          isBrowser: false
+        };
+        this.onZoomLevelsChange = this.onZoomLevelsChange.bind(this);
+        this.handleClick = this.handleClick.bind(this)
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      hasLocation: false,
-      lat: 35.699533,
-      lng: 51.378896,
-      viewPort: {},
-      zoom: 13,
-      isBrowser: false
-    };
+      }
+      componentDidMount() {
+        if (isBrowser) {
+      
+          this.setState({ isBrowser: true });
+        }
+      }
+  handleClick(e) {
+      let {viewport} = this.refs.refMap;
+      let {zoom} = this.refs.refMap.viewport;
+      if (zoom == undefined) {
+          zoom = 13;
+      }
+      //this.refs.refMap.viewport;
+      if (e.latlng != null) {
+          this.setState({
+              hasLocation: true,
+              lat: e.latlng["lat"],
+              lng: e.latlng["lng"],
+              zoom: zoom,
+              viewPort: viewport
+          });
+          console.log(e.latlng["lat"], e.latlng["lng"], zoom)
+          this.props.selectLatLng(this.state.lat, this.state.lng)
+      }
+  };
+  onZoomLevelsChange(e){
+      // debugger
+      let {viewport} = this.refs.refMap;
+      this.setState({
+          viewPort: viewport
+      });
+      console.log(viewport)
   }
-  componentDidMount() {
-    if (isBrowser) {
-      L = require("leaflet");
-      Map2 = require("react-leaflet").Map;
-      TileLayer = require("react-leaflet").TileLayer;
-      Marker = require("react-leaflet").Marker;
-      Popup = require("react-leaflet").Popup;
-      this.setState({ isBrowser: true });
-    }
-  }
+
+
   render() {
     // if (!isBrowser) return "";
 
@@ -88,11 +84,9 @@ class MapFieldGroup extends Component {
               <Map
                 center={position}
                 attributionControl={false}
-                // onClick={this.handleClick}
-                ref="refMap"
+                onClick={this.handleClick}
                 zoom={zoom}
-                viewport={viewPort}
-                // onzoomend={this.onZoomLevelsChange}
+                onzoomend={this.onZoomLevelsChange}
                 // onViewportChanged={viewPort}
                 ref="refMap"
               >
@@ -105,7 +99,7 @@ class MapFieldGroup extends Component {
             </div>
           </div>
         ) : (
-          "Loading map"
+          null
         )}
 
         {error ? <label className="invalid-feedback">{error}</label> : null}
