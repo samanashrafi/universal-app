@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Validator from "validator";
+import Helmet from "react-helmet"
 // import $ from "jquery";
 import SweetAlert from "sweetalert";
 import axios from "axios";
@@ -363,6 +364,9 @@ class Partners extends Component {
 
     return (
       <div className="partners">
+      <Helmet>
+          <title>درخواست همکاری</title>
+      </Helmet>
         <form className="container-center " onSubmit={this.onSubmit}>
           <div className="boxes">
             <h2 className="t-c">درخواست همکاری با ما</h2>

@@ -1,11 +1,14 @@
 const path = require('path'),
     webpack = require('webpack'),
-    srcPath = path.resolve(__dirname),
     distPath = path.resolve(__dirname, 'dist'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
-// const PUBLIC_DIR = path.resolve(__dirname, 'dist');
+    srcPath = path.resolve(__dirname, 'src/client'),
+
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    HtmlWebPackPlugin = require('html-webpack-plugin')
+
 const production = process.env.NODE_ENV &&
     process.env.NODE_ENV === "production";
+
 const Dotenv = require('dotenv-webpack');
 if (!production) {
     require('dotenv').config();
@@ -16,15 +19,19 @@ const modeWebpack = production ?
     "development";
 
 module.exports = {
-    // context: distPath,
-    entry: {
-        app: './src/client/index.js',
-    },
+    // context: srcPath,
+    entry: './src/client/index.js',
     output: {
+
         filename: 'client.js',
         path: distPath,
         publicPath: '/dist/',
 
+    },
+    devServer: {
+        contentBase: srcPath,
+        port: 3000,
+        open: true
     },
     mode: modeWebpack,
     module: {
@@ -61,10 +68,10 @@ module.exports = {
         new ExtractTextPlugin({
             filename: "app.css"
         }),
-        // new HtmlWebPackPlugin({
-        //     template: "./src/index.html",
-        //     filename: "./index.html"
-        // }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/index.html",
+            filename: "index.html"
+        }),
         new webpack.ProvidePlugin({
             'React': 'react',
             '$': 'jquery',
