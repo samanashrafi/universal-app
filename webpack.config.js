@@ -31,7 +31,8 @@ module.exports = {
     devServer: {
         contentBase: srcPath,
         port: 3000,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     mode: modeWebpack,
     module: {
