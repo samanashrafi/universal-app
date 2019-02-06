@@ -2,6 +2,8 @@
 
 import Home from 'client/app/home.jsx';
 import User from 'client/app/user.jsx';
+import PageNotFound from 'client/app/404.jsx';
+
 import AcademyDetails from 'client/app/academydetails/AcademyDetails.jsx';
 import AcademyList from 'client/app/academylist/AcademyList.jsx';
 import Partners from 'client/app/Partners.jsx';
@@ -35,6 +37,11 @@ export default {
             path: '/academydetails/:id',
             component: AcademyDetails,
             exact: true
+        },
+        {
+            
+            component:PageNotFound,
+           
         }
     ],
     redirects: [{
