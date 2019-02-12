@@ -3,17 +3,19 @@ import React from "react";
 import ReactDOM from "react-dom/server";
 import helmet from "react-helmet";
 import App from "client/app/app.jsx";
-const app = express();
-import { render } from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import reducers from "src/redux/reducers/combine";
-import { StaticRouter as Router, matchPath } from "react-router";
-import thunk from "src/redux/middleware/thunk";
-import Store from "src/redux/store";
 
+import {
+  Provider
+} from "react-redux";
+
+import {
+  StaticRouter as Router,
+  matchPath
+} from "react-router";
+import Store from "src/redux/store";
 import routeBank from "client/routes/routes";
 
+const app = express();
 app.use("/dist", express.static("./dist"));
 
 app.get("*", async (req, res) => {
@@ -21,25 +23,30 @@ app.get("*", async (req, res) => {
     //create new redux store on each request
     let foundPath = null;
     // match request url to our React Router paths and grab component
-    let { path, component } =
-      routeBank.routes.find(({ path, exact }) => {
-        foundPath = matchPath(req.url, {
-          path,
-          exact,
-          strict: false
-        });
-        return foundPath;
-      }) || {};
+    let {
+      path,
+      component
+    } =
+    routeBank.routes.find(({
+      path,
+      exact
+    }) => {
+      foundPath = matchPath(req.url, {
+        path,
+        exact,
+        strict: false
+      });
+      return foundPath;
+    }) || {};
 
-      // console.log("path : ",path);
-      // console.log("component :" ,component);
+    // console.log("path : ",path);
+    // console.log("component :" ,component);
     // safety check for valid component, if no component we initialize an empty shell.
-    if (!component) 
-    {
-      // console.log("component is false");
+    if (!component)
+
       component = {};
-    }
-  
+
+
     // safety check for fetchData function, if no function we give it an empty promise
     if (!component.fetchData)
       component.fetchData = () => new Promise(resolve => resolve());
@@ -48,56 +55,41 @@ app.get("*", async (req, res) => {
       Store,
       params: foundPath ? foundPath.params : {}
     });
-    console.log("foundPath :",foundPath)
 
-    // if(res.status(404).end()){
-    //   console.log("res :",res)
-    // }
 
-    
     //get store state (js object of entire store)
     // let preloadedState = store.getState();
     //context is used by react router, empty by default
     let context = {};
     //render helmet data aka meta data in <head></head>y
     const helmetData = helmet.renderStatic();
-    const content = renderFullPage(req, Store, context,helmetData);
-    console.log(content.routestatus)
-    // console.log(res.status(404))
+    const content = renderFullPage(req, Store, context, helmetData);
 
-    // if (foundPath) {
-    //   res.send(content.htmlcode);
-
-    // } else {
-    //   res.status(404).end("Not found, 404 status returned (Server Side Generated)");
-
-    // }
     //check context for url, if url exists then react router has ran into a redirect
-    if (context.url)
-    {
+    if (context.url) {
       //process redirect through express by redirecting
-      
       res.redirect(context.status, "http://" + req.headers.host + context.url);
-    } else if (foundPath && foundPath.path == "/404"){
-
+    } else if (foundPath && foundPath.path == "/404") {
       //if 404 then send our custom 404 page with initial state and meta data, this is needed for status code 404
       res.status(404).send(content.htmlcode);
-    }else{
-    //else send down page with initial state and meta data
-    console.log("send down page with initial state and meta data")
+    } else {
+      //else send down page with initial state and meta data
+      console.log("send down page with initial state and meta data")
       res.send(content.htmlcode)
     }
 
-    
+
   } catch (error) {
     res.status(400).send(renderFullPage("An error occured.", {}, {}));
   }
 });
 
 const port = process.env.PORT || 9000;
-app.listen(port, function() {
+app.listen(port, function () {
   console.log("app running on localhost:" + port);
 });
+
+
 
 function renderFullPage(req,store,context, helmet) {
   const content = ReactDOM.renderToString(
@@ -107,7 +99,6 @@ function renderFullPage(req,store,context, helmet) {
       </Router>
     </Provider>
   );
-  console.log("req : ",req.url)
   return{
     htmlcode :`
     <!doctype html>
