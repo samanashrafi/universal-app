@@ -104,6 +104,8 @@ function renderFullPage(req,store,context, helmet) {
     <!doctype html>
     <html>
       <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
         <link rel="icon" href="/dist/favicon.ico" type="image/ico" />
         ${helmet.title.toString()}
         ${helmet.meta.toString()}

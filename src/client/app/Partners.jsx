@@ -3,7 +3,7 @@ import Validator from "validator";
 import Helmet from "react-helmet"
 // import $ from "jquery";
 import SweetAlert from "sweetalert";
-import axios from "axios";
+import Req from "axios";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
 import NumberFieldGroup from "client/app/common/NumberFieldGroup";
 import SelectFieldGroup from "client/app/common/SelectFieldGroup";
@@ -13,6 +13,7 @@ import { apiUrl } from "client/routes/apiUrl";
 import MapFieldGroup from "client/app/common/MapFieldGroup";
 
 const isBrowser = typeof window !== "undefined";
+
 
 class Partners extends Component {
   constructor(props) {
@@ -91,17 +92,7 @@ class Partners extends Component {
   fileTypeChecker(value, type) {
     return new RegExp("(.*?)." + type + "$").test(value);
   }
-  componentDidMount() {
-    // if (isBrowser) {
-    //   MapFieldGroup = require("client/app/common/MapFieldGroup");
-    // }
-  }
-  componentWillMount() {
-    //   if(isBrowser){
-    //      this.MapFieldGroup = require("client/app/common/MapFieldGroup");
-    //     console.log(this.MapFieldGroup)
-    //   }
-  }
+
   onSubmit(e) {
     e.preventDefault();
     const {
@@ -119,10 +110,6 @@ class Partners extends Component {
       map,
       isEmpty
     } = this.state;
-    // $('.form-group').removeClass("shake");
-    // setTimeout(()=>{
-    //   $('.form-group').addClass("shake");
-    // },100)
     if (isEmpty) {
       this.isEmpty(category, "category", "لطفا دسته بندی را وارد کنید...");
       this.isEmpty(
@@ -204,7 +191,7 @@ class Partners extends Component {
         email: email
       };
 
-      // axios.get(apiUrl + "partners").then(() => {
+      // Req.get(apiUrl + "partners").then(() => {
       this.setState({
         category: "",
         schoolName: "",
@@ -249,7 +236,7 @@ class Partners extends Component {
   }
 
   getCategory() {
-    axios.get(apiUrl + "category").then(res => {
+    Req.get(apiUrl + "category").then(res => {
       this.setState({
         categoryList: res.data,
         categoryLoaded: true
@@ -258,7 +245,7 @@ class Partners extends Component {
   }
 
   getState() {
-    axios.get(apiUrl + "state").then(res => {
+    Req.get(apiUrl + "state").then(res => {
       this.setState({
         stateList: res.data,
         stateLoaded: true
@@ -280,7 +267,7 @@ class Partners extends Component {
       cityHeader: "انتخاب دسته بندی",
       neighbourhoodHeader: "انتخاب محله"
     });
-    axios.get(apiUrl + "city").then(res => {
+    Req.get(apiUrl + "city").then(res => {
       this.setState({
         cityList: res.data,
         cityLoaded: true
@@ -298,7 +285,7 @@ class Partners extends Component {
       neighbourhoodHeader: "انتخاب محله",
       neighbourhood: ""
     });
-    axios.get(apiUrl + "neighbourhood").then(res => {
+    Req.get(apiUrl + "neighbourhood").then(res => {
       this.setState({
         neighbourhoodList: res.data,
         neighbourhoodLoaded: true
@@ -346,6 +333,18 @@ class Partners extends Component {
 
   render() {
     const {
+      schoolName,
+      manager,
+      onwer,
+      file,
+      categoryList,
+      phoneNumber,
+      stateList,
+      cityList,
+      neighbourhood,
+      neighbourhoodList,
+      cellPhone,
+      email,
       errors,
       categoryLoaded,
       stateLoaded,
@@ -376,7 +375,7 @@ class Partners extends Component {
                   type="text"
                   name="schoolName"
                   label="نام آموزشگاه"
-                  value={this.state.schoolName}
+                  value={schoolName}
                   onChange={this.onChange}
                   error={errors.schoolName}
                   icon={"k-edit"}
@@ -385,7 +384,7 @@ class Partners extends Component {
                   type="text"
                   name="manager"
                   label="نام مدیریت"
-                  value={this.state.manager}
+                  value={manager}
                   onChange={this.onChange}
                   error={errors.manager}
                   icon={"k-user"}
@@ -395,7 +394,7 @@ class Partners extends Component {
                   type="text"
                   name="onwer"
                   label="نام صاحب امتیاز"
-                  value={this.state.onwer}
+                  value={onwer}
                   onChange={this.onChange}
                   error={errors.onwer}
                   icon={"k-edit"}
@@ -404,7 +403,7 @@ class Partners extends Component {
                   title={this.state.category}
                   state={"category"}
                   headerDefalt={categoryHeader}
-                  list={this.state.categoryList}
+                  list={categoryList}
                   toggleItem={this.toggleSelected}
                   icon={"k-bars"}
                   error={errors.category}
@@ -413,7 +412,7 @@ class Partners extends Component {
                 <UpLoadFile
                   label={"بارگزاری عکس مجوز"}
                   icon={"k-camera-1"}
-                  file={this.state.file}
+                  file={file}
                   error={errors.file}
                   selectFile={this.selectFile}
                 />
@@ -421,7 +420,7 @@ class Partners extends Component {
                   type="text"
                   name="phoneNumber"
                   label="شماره تلفن"
-                  value={this.state.phoneNumber}
+                  value={phoneNumber}
                   onChange={this.onChange}
                   error={errors.phoneNumber}
                   className={"ltr"}
@@ -434,7 +433,7 @@ class Partners extends Component {
                   title={this.state.state}
                   headerDefalt={stateHeader}
                   state={"state"}
-                  list={this.state.stateList}
+                  list={stateList}
                   toggleItem={this.toggleSelected}
                   icon={"k-map-marker-alt"}
                   error={errors.state}
@@ -445,7 +444,7 @@ class Partners extends Component {
                   title={this.state.city}
                   headerDefalt={cityHeader}
                   state={"city"}
-                  list={this.state.cityList}
+                  list={cityList}
                   toggleItem={this.toggleSelected}
                   icon={"k-map-marker-alt"}
                   error={errors.city}
@@ -453,10 +452,10 @@ class Partners extends Component {
                 />
 
                 <SelectFieldGroup
-                  title={this.state.neighbourhood}
+                  title={neighbourhood}
                   headerDefalt={neighbourhoodHeader}
                   state={"neighbourhood"}
-                  list={this.state.neighbourhoodList}
+                  list={neighbourhoodList}
                   toggleItem={this.toggleSelected}
                   icon={"k-map-marker-alt"}
                   error={errors.neighbourhood}
@@ -477,7 +476,7 @@ class Partners extends Component {
                   type="text"
                   name="cellPhone"
                   label="موبایل"
-                  value={this.state.cellPhone}
+                  value={cellPhone}
                   onChange={this.onChange}
                   error={errors.cellPhone}
                   className={"ltr"}
@@ -489,7 +488,7 @@ class Partners extends Component {
                   type="text"
                   name="email"
                   label="ایمیل"
-                  value={this.state.email}
+                  value={email}
                   onChange={this.onChange}
                   error={errors.email}
                   className={"ltr"}

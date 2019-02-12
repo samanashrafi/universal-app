@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 const isBrowser = typeof window !== "undefined";
 if (isBrowser) {
-
-
   var L = require("leaflet");
   var Map = require("react-leaflet").Map;
   var TileLayer = require("react-leaflet").TileLayer;
