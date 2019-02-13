@@ -116,6 +116,21 @@ $width-btn-filter: 106px;
       }
     }
 
+    &.language {
+      .form-select {
+        width: calc(21% - 5px);
+
+        &:nth-child(4) {
+          width: calc(37% - 5px);
+        }
+
+      }
+
+
+
+    }
+
+
     .btn {
       position: absolute;
       top: 5px;
