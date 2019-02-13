@@ -9,7 +9,7 @@
   margin: auto;
   cursor: pointer;
   font-weight: 600;
-  @include borderRadius(25px);
+  @include borderRadius(5px);
 
   &.clicked {
     span {
