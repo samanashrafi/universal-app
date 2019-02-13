@@ -4,26 +4,58 @@ $width-btn-filter: 106px;
   background: #eee;
   padding: 20px 0;
 
+  .category {
+    margin-bottom: $margin-size;
+    @include containerWidth();
+
+
+    li {
+      padding: 6px;
+      float: right;
+      cursor: pointer;
+      background: #ddd;
+      width: calc(16.66% - #{$margin-size});
+      margin-right: $margin-size;
+      text-align: center;
+      font-weight: 600;
+      @include borderRadius(5px);
+      @include transition(0.3s);
+
+      .icon {
+        margin-bottom: 6px;
+        height: 100px;
+        display: block;
+      }
+
+      span {
+        border-top: 1px solid #bbb;
+        padding-top: 6px;
+        display: block;
+
+      }
+    }
+  }
+
   .filter {
     position: relative;
-    margin: 20px 0;
     background: #fff;
     padding: 5px;
-    display: flex;
     padding-left: $width-btn-filter;
     // background-image: linear-gradient(to right bottom, #33bbed, #00c7cd, #32cb88, #a1c239, #faa61a);
 
-    @include borderRadius(25px);
+    @include borderRadius(5px);
+    @include containerWidth();
 
     .form-select {
       position: relative;
-      width: calc(33.33% - 5px);
+      width: calc(19% - 5px);
       margin-left: 5px;
       float: right;
-      padding: 6px;
-      background: #fff;
-      border: 1px solid $border-color;
-      @include borderRadius(25px);
+      @include borderRadius(5px);
+
+      .form-group {
+        margin-bottom: 0
+      }
 
       input,
       select {
@@ -42,9 +74,12 @@ $width-btn-filter: 106px;
         width: 100%;
         z-index: 1;
         @include borderRadius(25px);
+
         &::-webkit-scrollbar {
-          width: 12px; /* for vertical scrollbars */
-          height: 12px; /* for horizontal scrollbars */
+          width: 12px;
+          /* for vertical scrollbars */
+          height: 12px;
+          /* for horizontal scrollbars */
         }
 
         &::-webkit-scrollbar-track {
@@ -54,12 +89,15 @@ $width-btn-filter: 106px;
         &::-webkit-scrollbar-thumb {
           background: rgba(0, 0, 0, 0.5);
         }
+
         li {
           border-bottom: 1px solid $border-color;
           padding: 0 0 5px 0;
           margin: 0 0 5px 0;
           @include containerWidth();
-          &.not-found,&:last-child{
+
+          &.not-found,
+          &:last-child {
             padding: 0px;
             margin: 0px;
             border: none;
@@ -72,10 +110,18 @@ $width-btn-filter: 106px;
       }
     }
 
+    &.art {
+      .form-select:nth-child(5) {
+        width: calc(24% - 5px);
+      }
+    }
+
     .btn {
       position: absolute;
       top: 5px;
       left: 5px;
+      padding: 14px 30px;
+      height: 49px;
     }
   }
 }
