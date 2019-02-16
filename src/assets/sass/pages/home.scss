@@ -9,7 +9,7 @@ $width-btn-filter: 106px;
   .con {
     width: 100%;
     float: right;
-    overflow: scroll;
+    overflow-x: auto;
 
     .cat-list {
       ul {
@@ -230,6 +230,7 @@ $width-btn-filter: 106px;
       left: 5px;
       padding: 14px 30px;
       height: 49px;
+      min-width: 100px;
     }
 
     @include bp(upper1090max) {

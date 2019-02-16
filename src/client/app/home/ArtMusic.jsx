@@ -213,10 +213,8 @@ class ArtMusic extends Component {
                 />
             </div>
             <button className="btn">
-              <span>جستجو</span>
-              <div className="spinner">
-                <div className="double-bounce1" />
-                <div className="double-bounce2" />
+              <div className="text">جستجو</div>
+              <div className="spinners">
               </div>
             </button>
           </form>

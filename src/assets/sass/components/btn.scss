@@ -5,56 +5,68 @@
   outline: none;
   border: none;
   display: table;
+  overflow: hidden;
   position: relative;
   margin: auto;
   cursor: pointer;
   font-weight: 600;
   @include borderRadius(5px);
+  @include transition(0.3s);
+
+  &::before {
+    content: "";
+  }
 
   &.clicked {
-    span {
-      display: none;
+    animation-duration: 1.25s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: darkgray;
+    background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    height: 100px;
+    position: relative;
+    .text {
+      top: -44px;
     }
-    .spinner {
-      display: block;
+
+    .spinners {
+      display: table;
+      margin: auto;
+      bottom: 20px;
     }
   }
-
-  .spinner {
+  .text {
+    @include transition(0.3s);
+    position: relative;
+    display: inherit;
+  }
+  .spinners {
     width: 25px;
     height: 25px;
+    bottom: -25px;
     position: relative;
-    // top: 8px;
-    display: table;
-    margin: 0 auto;
-    // opacity: 0;
-    display: none;
-  }
+    display: inherit;
+    @include transition(0.3s);
 
-  .double-bounce1,
-  .double-bounce2 {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    opacity: 0.6;
-    position: absolute;
-    top: 0;
-    left: 0;
-    @include borderRadius(50%);
-    @include animation(sk-bounce 2s infinite ease-in-out);
-  }
-
-  .double-bounce2 {
-    @include animation-delay(-1s);
-  }
-
-  @include keyframes(sk-bounce) {
-    0%,
-    100% {
-      @include scale(0);
+    &:after {
+      content: " ";
+      display: block;
+      width: 25px;
+      height: 25px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
     }
-    50% {
-      @include scale(1);
+
+    &.drop-down {
+      position: absolute;
+      top: 12px;
+      left: 10px;
     }
   }
 }
