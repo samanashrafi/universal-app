@@ -83,6 +83,8 @@ $width-btn-filter: 106px;
     padding: 5px;
     margin-top: $margin-size;
     padding-left: $width-btn-filter;
+    animation: hide 1.2s alternate;
+
     // background-image: linear-gradient(to right bottom, #33bbed, #00c7cd, #32cb88, #a1c239, #faa61a);
 
     @include borderRadius(5px);
