@@ -1,0 +1,116 @@
+{
+  "search": [
+    {
+      "id": "1",
+      "name": " آموزشگاه زبان سفیر"
+    },
+    {
+      "id": "2",
+      "name": "آموزشگاه زبان کبیر"
+    },
+    {
+      "id": "3",
+      "name": " آموزشگاه زبان آرام"
+    },
+    {
+      "id": "4",
+      "name": "آموزشگاه زبان سعادت"
+    },
+    {
+      "id": "5",
+      "name": "آموزشگاه زبان آکو"
+    }
+  ],
+  "category": [
+    {
+      "id": 5,
+      "title": "آموزشگاه",
+      "selected": false,
+      "key": "categoryList"
+    },
+    {
+      "id": 2,
+      "title": "سالن ورزشی",
+      "selected": false,
+      "key": "categoryList"
+    },
+    {
+      "id": 3,
+      "title": "مدارس",
+      "selected": false,
+      "key": "categoryList"
+    }
+  ],
+  "state": [
+    {
+      "id": 0,
+      "title": "تهران",
+      "selected": false,
+      "key": "stateList"
+    },
+    {
+      "id": 1,
+      "title": "اصفهان",
+      "selected": false,
+      "key": "stateList"
+    },
+    {
+      "id": 3,
+      "title": "فارس",
+      "selected": false,
+      "key": "stateList"
+    },
+    {
+      "id": 3,
+      "title": "خوزستان",
+      "selected": false,
+      "key": "stateList"
+    },
+    {
+      "id": 4,
+      "title": "کردستان",
+      "selected": false,
+      "key": "stateList"
+    },
+    {
+      "id": 5,
+      "title": "تبریز",
+      "selected": false,
+      "key": "stateList"
+    }
+  ],
+  "city": [
+    {
+      "id": 0,
+      "title": "تهران",
+      "selected": false,
+      "key": "cityList"
+    },
+    {
+      "id": 1,
+      "title": "کرج",
+      "selected": false,
+      "key": "cityList"
+    }
+  ],
+  "neighbourhood": [
+    {
+      "id": 0,
+      "title": "صادقیه",
+      "selected": false,
+      "key": "neighbourhoodList"
+    },
+    {
+      "id": 1,
+      "title": "سعادت آباد",
+      "selected": false,
+      "key": "neighbourhoodList"
+    },
+    {
+      "id": 2,
+      "title": "مرزداران",
+      "selected": false,
+      "key": "neighbourhoodList"
+    }
+  ]
+}

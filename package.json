@@ -7,7 +7,9 @@
     "build:client": "webpack --progress --colors --config webpack.config.js",
     "build:server": "webpack --progress --colors --config webpack.config.server.js",
     "start": "webpack-dev-server --progress --colors --config webpack.config.js",
-    "server": "webpack --progress --colors --config webpack.config.js && webpack --progress --colors --config webpack.config.server.js && node dist/server.js"
+    "dev:all":"npm-run-all --serial start jsonserver",
+    "server": "webpack --progress --colors --config webpack.config.js && webpack --progress --colors --config webpack.config.server.js && node dist/server.js jsonserver",
+    "jsonserver": "nodemon jsonserver.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,7 +40,10 @@
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "jquery": "^3.3.1",
+    "json-server": "^0.14.2",
     "leaflet": "^1.4.0",
+    "nodemon": "^1.18.10",
+    "npm-run-all": "^4.1.5",
     "prop-types": "^15.6.2",
     "query-string": "^6.2.0",
     "react": "^16.7.0",
