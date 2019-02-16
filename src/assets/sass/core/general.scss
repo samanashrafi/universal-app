@@ -8,6 +8,7 @@ body {
   direction: rtl;
   float: right;
   width: 100%;
+  min-width: 320px;
   line-height: 1.33em;
 
   @include bp(underdesktop) {
