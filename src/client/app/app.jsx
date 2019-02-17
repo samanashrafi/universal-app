@@ -3,6 +3,8 @@ import { Switch, Link, Route } from "react-router-dom";
 import RedirectWithStatus from "client/app/redirect-w-status.jsx";
 import routeOptions from "client/routes/routes";
 import {connect} from "react-redux"
+import PropTypes from 'prop-types'
+
 import Header from "client/app/layout/Header.jsx";
 import Footer from "client/app/layout/Footer.jsx";
 import { citesFetch } from 'src/redux/actions/cites-actions';
@@ -53,5 +55,10 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  citesFetch : PropTypes.func.isRequired,
+  districFetch : PropTypes.func.isRequired,
 }
 export default connect(null,{citesFetch,districFetch})(App);
