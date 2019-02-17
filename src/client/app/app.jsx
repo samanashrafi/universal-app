@@ -5,12 +5,15 @@ import routeOptions from "client/routes/routes";
 import {connect} from "react-redux"
 import Header from "client/app/layout/Header.jsx";
 import Footer from "client/app/layout/Footer.jsx";
-import { citesFetch } from 'src/redux/actions/cites-actions'
+import { citesFetch } from 'src/redux/actions/cites-actions';
+import { districFetch } from 'src/redux/actions/distric-actions'
+
 import "src/assets/sass/mian.scss";
 
 class App extends Component {
   componentDidMount() {
     this.props.citesFetch();
+    this.props.districFetch();
     this.getHeightWindow();
   }
   getHeightWindow() {
@@ -51,4 +54,4 @@ class App extends Component {
     );
   }
 }
-export default connect(null,{citesFetch})(App);
+export default connect(null,{citesFetch,districFetch})(App);
