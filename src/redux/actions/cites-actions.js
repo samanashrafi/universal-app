@@ -10,6 +10,11 @@ import {
 export function citesFetch() {
 
     return async function (dispatch) {
+        dispatch({
+            type: Cites.CITES_LOAD,
+            isLoaded: false
+
+        });
         let {
             data
         } = await Req.get(apiUrl + "cites")
