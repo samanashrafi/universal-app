@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { Switch, Link, Route } from "react-router-dom";
 import RedirectWithStatus from "client/app/redirect-w-status.jsx";
 import routeOptions from "client/routes/routes";
+import {connect} from "react-redux"
 import Header from "client/app/layout/Header.jsx";
 import Footer from "client/app/layout/Footer.jsx";
+import { citesFetch } from 'src/redux/actions/cites-actions'
 import "src/assets/sass/mian.scss";
 
 class App extends Component {
   componentDidMount() {
+    this.props.citesFetch();
     this.getHeightWindow();
   }
   getHeightWindow() {
@@ -48,4 +51,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default connect(null,{citesFetch})(App);
