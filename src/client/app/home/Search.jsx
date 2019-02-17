@@ -73,8 +73,9 @@ class Search extends Component {
           </div>
         </div>
         <div className="container-center">
-        {artMusicLoaded ? <ArtMusic/> : null }
-          {languageLoaded ? <Language/> : null }
+        <ArtMusic/>
+        {/* {artMusicLoaded ? <ArtMusic/> : null }
+          {languageLoaded ? <Language/> : null } */}
         </div>
 
       

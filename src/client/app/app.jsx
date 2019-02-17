@@ -8,14 +8,14 @@ import PropTypes from 'prop-types'
 import Header from "client/app/layout/Header.jsx";
 import Footer from "client/app/layout/Footer.jsx";
 import { citesFetch } from 'src/redux/actions/cites-actions';
-import { districFetch } from 'src/redux/actions/distric-actions'
+import { districtFetch } from 'src/redux/actions/district-actions'
 
 import "src/assets/sass/mian.scss";
 
 class App extends Component {
   componentDidMount() {
     this.props.citesFetch();
-    this.props.districFetch();
+    this.props.districtFetch();
     this.getHeightWindow();
   }
   getHeightWindow() {
@@ -59,6 +59,6 @@ class App extends Component {
 
 App.propTypes = {
   citesFetch : PropTypes.func.isRequired,
-  districFetch : PropTypes.func.isRequired,
+  districtFetch : PropTypes.func.isRequired,
 }
-export default connect(null,{citesFetch,districFetch})(App);
+export default connect(null,{citesFetch,districtFetch})(App);

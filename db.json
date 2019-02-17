@@ -46,37 +46,37 @@
       "id": 0,
       "title": "تهران",
       "selected": false,
-      "key": "stateList"
+      "key": "citesList"
     },
     {
       "id": 1,
       "title": "اصفهان",
       "selected": false,
-      "key": "stateList"
+      "key": "citesList"
     },
     {
       "id": 3,
       "title": "فارس",
       "selected": false,
-      "key": "stateList"
+      "key": "citesList"
     },
     {
       "id": 3,
       "title": "خوزستان",
       "selected": false,
-      "key": "stateList"
+      "key": "citesList"
     },
     {
       "id": 4,
       "title": "کردستان",
       "selected": false,
-      "key": "stateList"
+      "key": "citesList"
     },
     {
       "id": 5,
       "title": "تبریز",
       "selected": false,
-      "key": "stateList"
+      "key": "citesList"
     }
   ],
   "city": [
@@ -93,24 +93,24 @@
       "key": "cityList"
     }
   ],
-  "distric": [
+  "district": [
     {
       "id": 0,
       "title": "صادقیه",
       "selected": false,
-      "key": "neighbourhoodList"
+      "key": "districtList"
     },
     {
       "id": 1,
       "title": "سعادت آباد",
       "selected": false,
-      "key": "neighbourhoodList"
+      "key": "districtList"
     },
     {
       "id": 2,
       "title": "مرزداران",
       "selected": false,
-      "key": "neighbourhoodList"
+      "key": "districtList"
     }
   ]
 }
