@@ -1,5 +1,5 @@
 import {
-    Distric
+    District
 } from 'src/redux/constants/types';
 
 const initialState = {
@@ -8,15 +8,15 @@ const initialState = {
 
 }
 
-export default function districReducer(state = initialState, action) {
+export default function districtReducer(state = initialState, action) {
 
     switch (action.type) {
-        case Distric.DISTRIC_LOAD:
+        case District.DISTRICT_LOAD:
             return {
                 ...state,
                 isLoaded: false
             }
-        case Distric.DISTRIC_SUCCESS:
+        case District.DISTRICT_SUCCESS:
             return {
                 ...state,
                 list: action.payload,

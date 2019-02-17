@@ -19,7 +19,7 @@ export const Cites = {
   CITES_SUCCESS: "CITES_SUCCESS",
 };
 
-export const Distric ={
-  DISTRIC_LOAD:"DISTRIC_LOAD",
-  DISTRIC_SUCCESS:"DISTRIC_SUCCESS"
+export const District ={
+  DISTRICT_LOAD:"DISTRICT_LOAD",
+  DISTRICT_SUCCESS:"DISTRICT_SUCCESS"
 }
