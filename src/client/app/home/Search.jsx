@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import $ from "jquery";
-import { searchFetch } from "src/redux/actions/search-action.js";
-
 import ArtMusic from "client/app/home/ArtMusic.jsx";
 import Language from "client/app/home/Language.jsx";
 
-import { withRouter } from "react-router-dom";
-import swal from "sweetalert";
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -83,18 +75,5 @@ class Search extends Component {
     );
   }
 }
-// Search.propTypes = {
-//   searchFetch: PropTypes.func.isRequired,
-//   //  q: PropTypes.array.isRequired,
-//   // isLoaded: PropTypes.bool.isRequired
-// };
 
-const mapStateToProps = state => ({
-  data: state.search.data,
-  isLoaded: state.search.isLoaded
-});
-
-export default connect(
-  mapStateToProps,
-  { searchFetch }
-)(withRouter(Search));
+export default Search;

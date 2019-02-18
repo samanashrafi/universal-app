@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import SelectFieldGroup from "client/app/common/SelectFieldGroup";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
 
@@ -56,30 +57,20 @@ class ArtMusic extends Component {
     //  this.onChangeQ = this.onChangeQ.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  onChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-  componentWillReceiveProps(){
-    const { cites,districts } = this.props;
-    debugger
-    if (cites.isLoaded ) {
-      this.setState({
-        cityList: cites.list,
-      });
-    }
-    if ( districts.isLoaded) {
-      this.setState({
-        districtList: districts.list
-      });
-    }
-    
-  }
  
-  // filterText(filter){
-  //    return filter.replace(/ی/g,'ي').replace(/ک/g,'ك');
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.cites.isLoaded) {
+      this.setState({
+        cityList: nextProps.cites.list
+      });
+    }
+    if (nextProps.districts.isLoaded) {
+      this.setState({
+        districtList: nextProps.districts.list
+      });
+    }
+  }
+
   // onChangeQ(e){
   //   e.preventDefault();
   //   this.setState({input:this.refs.searchFilter.value.length})
@@ -89,7 +80,11 @@ class ArtMusic extends Component {
   //     this.refs.searchFilter.focus();
   //   }
   // }
-
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
   onSubmit(e) {
     e.preventDefault();
     if (this.refs.searchFilter.value.length == 0) {
@@ -102,9 +97,11 @@ class ArtMusic extends Component {
       }
     }
   }
-
+  filterText(filter) {
+    return filter.replace(/ی/g, "ي").replace(/ک/g, "ك");
+  }
   toggleSelected(id, key, state) {
-    debugger;
+    debugger
     var temp = this.state[key].map(obj => {
       var rObj = {};
       rObj["id"] = obj.id;
@@ -210,8 +207,9 @@ const mapStateToProps = state => ({
   cites: state.cites,
   districts: state.district
 });
-
-export default connect(
-  mapStateToProps,
-  {}
-)(ArtMusic);
+export default 
+  connect(
+    mapStateToProps,
+    {}
+  )(withRouter(ArtMusic))
+;

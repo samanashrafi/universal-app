@@ -46,37 +46,37 @@
       "id": 0,
       "title": "تهران",
       "selected": false,
-      "key": "citesList"
+      "key": "cityList"
     },
     {
       "id": 1,
       "title": "اصفهان",
       "selected": false,
-      "key": "citesList"
+      "key": "cityList"
     },
     {
       "id": 3,
       "title": "فارس",
       "selected": false,
-      "key": "citesList"
+      "key": "cityList"
     },
     {
       "id": 3,
       "title": "خوزستان",
       "selected": false,
-      "key": "citesList"
+      "key": "cityList"
     },
     {
       "id": 4,
       "title": "کردستان",
       "selected": false,
-      "key": "citesList"
+      "key": "cityList"
     },
     {
       "id": 5,
       "title": "تبریز",
       "selected": false,
-      "key": "citesList"
+      "key": "cityList"
     }
   ],
   "city": [
