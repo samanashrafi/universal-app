@@ -7,7 +7,7 @@ import {
 } from 'src/client/routes/apiUrl.js';
 
 
-export function districtFetch() {
+export function artMusicCategory() {
 
     return async function (dispatch) {
         dispatch({

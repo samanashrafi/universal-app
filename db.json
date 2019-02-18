@@ -79,20 +79,7 @@
       "key": "cityList"
     }
   ],
-  "city": [
-    {
-      "id": 0,
-      "title": "تهران",
-      "selected": false,
-      "key": "cityList"
-    },
-    {
-      "id": 1,
-      "title": "کرج",
-      "selected": false,
-      "key": "cityList"
-    }
-  ],
+  
   "district": [
     {
       "id": 0,
@@ -111,6 +98,21 @@
       "title": "مرزداران",
       "selected": false,
       "key": "districtList"
+    }
+  ],
+
+  "artmusiccategory": [
+    {
+      "id": "1",
+      "title": "مبانی ترکیب بندی در عکاسی",
+      "selected": false,
+      "key": "artMusicCategoryList"
+    },
+    {
+      "id": 2,
+      "title": "سفال و سرامیک",
+      "selected": false,
+      "key": "artMusicCategoryList"
     }
   ]
 }

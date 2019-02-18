@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import SelectFieldGroup from "client/app/common/SelectFieldGroup";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
+import { artMusicCategory } from "src/redux/actions/artMusic-actions";
 
 class ArtMusic extends Component {
   constructor(props) {
@@ -25,23 +26,9 @@ class ArtMusic extends Component {
           key: "artList"
         }
       ],
-
-      categoryArt: "",
-      categoryArtHeader: "زمینه هنری",
-      categoryArtList: [
-        {
-          id: "1",
-          title: "مبانی ترکیب بندی در عکاسی",
-          selected: false,
-          key: "categoryArtList"
-        },
-        {
-          id: 2,
-          title: "سفال و سرامیک",
-          selected: false,
-          key: "categoryArtList"
-        }
-      ],
+      artMusicCategory: "",
+      artMusicCategoryHeader: "زمینه هنری",
+      artMusicCategoryList: [],
       city: "",
       cityHeader: "شهر",
       cityList: [],
@@ -57,18 +44,27 @@ class ArtMusic extends Component {
     //  this.onChangeQ = this.onChangeQ.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
- 
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps.cites.isLoaded) {
+    const { cites, districts, artMusic } = nextProps;
+    if (cites.isLoaded) {
       this.setState({
-        cityList: nextProps.cites.list
+        cityList: cites.list
       });
     }
-    if (nextProps.districts.isLoaded) {
+    if (districts.isLoaded) {
       this.setState({
-        districtList: nextProps.districts.list
+        districtList: districts.list
       });
     }
+    if (artMusic.isLoaded) {
+      this.setState({
+        artMusicCategoryList: artMusic.list
+      });
+    }
+  }
+  componentDidMount() {
+    this.props.artMusicCategory();
   }
 
   // onChangeQ(e){
@@ -101,7 +97,6 @@ class ArtMusic extends Component {
     return filter.replace(/ی/g, "ي").replace(/ک/g, "ك");
   }
   toggleSelected(id, key, state) {
-    debugger
     var temp = this.state[key].map(obj => {
       var rObj = {};
       rObj["id"] = obj.id;
@@ -122,9 +117,9 @@ class ArtMusic extends Component {
       art,
       artList,
       artHeader,
-      categoryArt,
-      categoryArtHeader,
-      categoryArtList,
+      artMusicCategory,
+      artMusicCategoryHeader,
+      artMusicCategoryList,
       city,
       cityHeader,
       cityList,
@@ -133,7 +128,7 @@ class ArtMusic extends Component {
       districtList,
       errors
     } = this.state;
-    const { cites, districts } = this.props;
+    const { cites, districts, artMusic } = this.props;
     return (
       <form className="filter art" onSubmit={this.onSubmit}>
         <div className="form-select">
@@ -150,14 +145,14 @@ class ArtMusic extends Component {
         </div>
         <div className="form-select">
           <SelectFieldGroup
-            title={categoryArt}
-            headerDefalt={categoryArtHeader}
-            state="categoryArt"
-            list={categoryArtList}
+            title={artMusicCategory}
+            headerDefalt={artMusicCategoryHeader}
+            state="artMusicCategory"
+            list={artMusicCategoryList}
             toggleItem={this.toggleSelected}
             icon={""}
-            error={errors.categoryArt}
-            isLoaded={true}
+            error={errors.artMusicCategory}
+            isLoaded={artMusic.isLoaded}
           />
         </div>
         <div className="form-select">
@@ -205,11 +200,10 @@ class ArtMusic extends Component {
 }
 const mapStateToProps = state => ({
   cites: state.cites,
-  districts: state.district
+  districts: state.district,
+  artMusic: state.artMusic
 });
-export default 
-  connect(
-    mapStateToProps,
-    {}
-  )(withRouter(ArtMusic))
-;
+export default connect(
+  mapStateToProps,
+  { artMusicCategory }
+)(withRouter(ArtMusic));

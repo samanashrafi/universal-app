@@ -13,13 +13,13 @@ export default function artMusicReducer(state = initialState, action) {
         case ArtMusic.ARTMUSICCATEGORY_LOAD:
             return {
                 ...state,
-                isloaded: false
+                isLoaded: false
             }
         case ArtMusic.ARTMUSICCATEGORY_SUCCESS:
             return {
                 ...state,
                 list: action.payload,
-                isloaded: false
+                isLoaded: true
             }
         default:
             return state;
