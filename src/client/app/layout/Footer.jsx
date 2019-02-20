@@ -8,7 +8,7 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <div className="newsletters">
+        {/* <div className="newsletters">
           <p>با الو کلاس به روز باشید</p>
           <p>
             با عضویت در خبرنامه از آخرین تخفیفات و دوره های جدید با خبر شوید
@@ -19,14 +19,14 @@ class Footer extends Component {
               <button className="btn">ارسال</button>
             </div>
           </form>
-        </div>
+        </div> */}
         <div className="body container-center">
           <div className="rw">
             <div className="cl-d-3">
-              <h5>الوکلاس</h5>
+              <h5>جاباینجا</h5>
               <ul>
                 <li>
-                  <Link to="/">درباره الوکلاس</Link>
+                  <Link to="/">درباره جاباینجا</Link>
                 </li>
                 <li>
                   <Link to="/">شرایط و قوانین</Link>
@@ -40,16 +40,16 @@ class Footer extends Component {
               <h5>دسته بندی ها </h5>
               <ul>
                 <li>
-                  <Link to="/">مدارس</Link>
+                  <Link to="/">وب،‌ برنامه‌نویسی و نرم‌افزار</Link>
                 </li>
                 <li>
-                  <Link to="/">آموزشکده</Link>
+                  <Link to="/">طراح گرافیک</Link>
                 </li>
                 <li>
-                  <Link to="/">موسسات</Link>
+                  <Link to="/">فروش و بازاریابی</Link>
                 </li>
                 <li>
-                  <Link to="/">سالن های ورزشی و تفریحی</Link>
+                  <Link to="/">حسابداری</Link>
                 </li>
               </ul>
             </div>
@@ -72,21 +72,21 @@ class Footer extends Component {
         </div>
         <div className="copy-write ">
           <div className="container-center">
-          <span>کلیه حقوق این وب سایت متعلق به شرکت الو کلاس می باشد.</span>
-          <nav className="social">
-            <a target="_blank" href="https://www.instagram.com/alokelas/">
-              <i className="alo-instagram" />
-            </a>
-            <a target="_blank" href="https://www.facebook.com/alokelas">
-              <i className="alo-facebook" />
-            </a>
-            <a target="_blank" href="https://twitter.com/alokelas">
-              <i className="alo-twitter" />
-            </a>
-            <a target="_blank" href="http://www.linkedin.com/alokelas">
-              <i className="alo-linkedin" />
-            </a>
-          </nav>
+            <span>کلیه حقوق این وب سایت متعلق به شرکت جاباینجا می باشد.</span>
+            <nav className="social">
+              <a target="_blank" href="https://www.instagram.com/jobinja/">
+                <i className="alo-instagram" />
+              </a>
+              <a target="_blank" href="https://www.facebook.com/jobinja">
+                <i className="alo-facebook" />
+              </a>
+              <a target="_blank" href="https://twitter.com/jobinja">
+                <i className="alo-twitter" />
+              </a>
+              <a target="_blank" href="http://www.linkedin.com/jobinja">
+                <i className="alo-linkedin" />
+              </a>
+            </nav>
           </div>
         </div>
       </footer>

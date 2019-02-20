@@ -13,7 +13,6 @@ header {
     float: right;
   }
 
-
   .user-login {
     position: relative;
     float: left;
@@ -31,7 +30,6 @@ header {
       position: relative;
       top: 5px;
     }
-
   }
 
   .menu {
@@ -41,7 +39,6 @@ header {
     @include transition(0.3s);
 
     @include bp(underdesktop) {
-
       width: 100%;
       height: calc(100% - 48px);
       position: fixed;
@@ -63,11 +60,9 @@ header {
         opacity: 1;
         visibility: visible;
       }
-
     }
 
     .overley {
-
       @include bp(underdesktop) {
         width: 230px;
         z-index: 999;
@@ -85,7 +80,6 @@ header {
         @include transition(0.5s);
         @include translate3d(230px, 0, 0);
       }
-
     }
 
     li {
@@ -97,7 +91,6 @@ header {
       @include bp(underdesktop) {
         width: 100%;
         padding-bottom: 10px;
-
       }
 
       a,
@@ -126,7 +119,6 @@ header {
             right: 0;
             float: left;
           }
-
         }
       }
 
@@ -161,21 +153,18 @@ header {
 
           &:last-child {
             border-bottom: none;
-
           }
         }
 
         @include bp(underdesktop) {
           position: static;
-          display: none; 
+          display: none;
           opacity: 1;
           visibility: visible;
           background: #bbb;
           float: right;
           width: 100%;
           @include borderRadius(0px);
-
-
         }
       }
     }
@@ -193,8 +182,8 @@ header {
 
   .logo {
     float: right;
-    width: 240px;
-    border-left: 1px solid $border-color;
+    // width: 240px;
+    // border-left: 1px solid $border-color;
     padding: 0 0 0 10px;
     text-align: center;
 
@@ -226,7 +215,6 @@ header {
 
   @include bp(upper1090max) {
     padding: 10px 0px;
-
   }
 
   @include bp(underdesktop) {

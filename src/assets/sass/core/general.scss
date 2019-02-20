@@ -3,7 +3,7 @@
 body {
   font-family: $font-family;
   color: $color-body;
-  background: #f1f8f8;
+  // background: #f1f8f8;
   font-size: 0.9em;
   direction: rtl;
   float: right;
@@ -214,7 +214,6 @@ textarea::placeholder {
 /*sweet alert*/
 
 .swal-button-container {
-
   margin: 0 auto;
   display: table;
   text-align: center;

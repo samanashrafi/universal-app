@@ -1,7 +1,7 @@
 .form-group {
   position: relative;
   margin-bottom: $margin-size + 5px;
-  background: #f4fcfe;
+  background: #f7f7f7;
   @include containerWidth();
   @include borderRadius(5px);
 
@@ -9,7 +9,6 @@
     animation-name: shake;
     animation-duration: 0.9s;
     animation-timing-function: ease-out;
-
   }
 
   .from-input {
@@ -157,7 +156,6 @@
     &:focus-within {
       border-right: 2px solid #eee;
       border-left: 2px solid #eee;
-
     }
 
     &.is-focus .first-child,
@@ -170,7 +168,7 @@
       top: 45px;
       right: -2px;
       z-index: 9999;
-      background: #f4fcfe;
+      background: #f7f7f7;
       // background: #f7f7f7;
       padding: 0px 40px;
       padding-bottom: 10px;
@@ -216,13 +214,8 @@
           font-size: 2em;
         }
       }
-
-
     }
-
   }
-
-
 
   .form-file {
     position: relative;
@@ -312,8 +305,6 @@
       border-left: 2px solid rgb(255, 73, 73);
     }
 
-
-
     &.is-focus,
     &:focus-within {
       border-right: 2px solid #eee;
@@ -325,7 +316,6 @@
     &:focus-within i {
       color: #ccc;
     }
-
   }
 
   .form-map {

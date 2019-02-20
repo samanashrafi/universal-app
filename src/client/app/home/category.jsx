@@ -3,38 +3,22 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import SelectFieldGroup from "client/app/common/SelectFieldGroup";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
-import { artMusicCategory } from "src/redux/actions/artMusic-actions";
+import { getCategory } from "src/redux/actions/category-actions";
 
 class ArtMusic extends Component {
+  static fetchData({ store }) {
+    return store.dispatch(getCategory());
+  }
   constructor(props) {
     super(props);
     this.state = {
       text: "",
-      art: "",
-      artHeader: "هنر و موسیقی",
-      artList: [
-        {
-          id: "1",
-          title: "هنر",
-          selected: false,
-          key: "artList"
-        },
-        {
-          id: 2,
-          title: "موسیقی",
-          selected: false,
-          key: "artList"
-        }
-      ],
-      artMusicCategory: "",
-      artMusicCategoryHeader: "زمینه هنری",
-      artMusicCategoryList: [],
+      categores: "",
+      categoryHeader: "دسته بندی",
+      categoryList: [],
       city: "",
       cityHeader: "شهر",
       cityList: [],
-      district: "",
-      districtHeader: "منطقه و محله",
-      districtList: [],
       errors: [],
       input: 0
     };
@@ -46,25 +30,22 @@ class ArtMusic extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { cites, districts, artMusic } = nextProps;
+    const { cites, category } = nextProps;
     if (cites.isLoaded) {
       this.setState({
         cityList: cites.list
       });
     }
-    if (districts.isLoaded) {
+
+    if (category.isLoaded) {
       this.setState({
-        districtList: districts.list
+        categoryList: category.list
       });
     }
-    if (artMusic.isLoaded) {
-      this.setState({
-        artMusicCategoryList: artMusic.list
-      });
-    }
+    console.log(nextProps);
   }
   componentDidMount() {
-    this.props.artMusicCategory();
+    this.props.getCategory();
   }
 
   // onChangeQ(e){
@@ -107,52 +88,46 @@ class ArtMusic extends Component {
     });
     temp[id].selected = !temp[id].selected;
     this.setState({
-      // [key]: temp,
+      [key]: temp,
       [state]: temp[id].title
     });
   }
   render() {
     const {
       text,
-      art,
-      artList,
-      artHeader,
-      artMusicCategory,
-      artMusicCategoryHeader,
-      artMusicCategoryList,
+      categores,
+      categoryHeader,
+      categoryList,
       city,
       cityHeader,
       cityList,
-      district,
-      districtHeader,
-      districtList,
       errors
     } = this.state;
-    const { cites, districts, artMusic } = this.props;
+    const { cites, category } = this.props;
     return (
       <form className="filter art" onSubmit={this.onSubmit}>
         <div className="form-select">
-          <SelectFieldGroup
-            title={art}
-            headerDefalt={artHeader}
-            state={"art"}
-            list={artList}
-            toggleItem={this.toggleSelected}
-            icon={""}
-            error={errors.art}
-            isLoaded={true}
+          <TextFieldGroup
+            type="text"
+            name="text"
+            label="عنوان شغلی، مهارت یا..."
+            value={text}
+            onChange={this.onChange}
+            error={errors.text}
+            icon={"k-edit"}
           />
         </div>
+
         <div className="form-select">
           <SelectFieldGroup
-            title={artMusicCategory}
-            headerDefalt={artMusicCategoryHeader}
-            state="artMusicCategory"
-            list={artMusicCategoryList}
+            title={categores}
+            headerDefalt={categoryHeader}
+            state="categores"
+            list={categoryList}
             toggleItem={this.toggleSelected}
             icon={""}
             error={errors.artMusicCategory}
-            isLoaded={artMusic.isLoaded}
+            isLoaded={category.isLoaded}
           />
         </div>
         <div className="form-select">
@@ -167,29 +142,7 @@ class ArtMusic extends Component {
             isLoaded={cites.isLoaded}
           />
         </div>
-        <div className="form-select">
-          <SelectFieldGroup
-            title={district}
-            headerDefalt={districtHeader}
-            state="district"
-            list={districtList}
-            toggleItem={this.toggleSelected}
-            icon={""}
-            error={errors.district}
-            isLoaded={districts.isLoaded}
-          />
-        </div>
-        <div className="form-select">
-          <TextFieldGroup
-            type="text"
-            name="text"
-            label="آموزشگده یا دوره مورد نظر..."
-            value={text}
-            onChange={this.onChange}
-            error={errors.text}
-            icon={"k-edit"}
-          />
-        </div>
+
         <button className="btn">
           <div className="text">جستجو</div>
           <div className="spinners" />
@@ -200,10 +153,13 @@ class ArtMusic extends Component {
 }
 const mapStateToProps = state => ({
   cites: state.cites,
-  districts: state.district,
-  artMusic: state.artMusic
+  category: state.category
 });
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(actions, dispatch);
+// }
 export default connect(
   mapStateToProps,
-  { artMusicCategory }
+  // mapDispatchToProps,
+  { getCategory }
 )(withRouter(ArtMusic));

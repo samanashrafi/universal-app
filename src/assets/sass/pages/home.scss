@@ -13,10 +13,8 @@ $width-btn-filter: 106px;
 
     .cat-list {
       ul {
-
         @include containerWidth();
         overflow: hidden;
-
 
         li {
           padding: 6px;
@@ -40,13 +38,11 @@ $width-btn-filter: 106px;
             border-top: 1px solid #bbb;
             padding-top: 6px;
             display: block;
-
           }
         }
       }
 
       @include bp(underdesktop) {
-
         overflow: hidden;
         height: 142px;
 
@@ -60,7 +56,6 @@ $width-btn-filter: 106px;
             width: calc(165px - #{$margin-size});
             display: inline-block;
             float: none;
-
           }
         }
       }
@@ -71,11 +66,7 @@ $width-btn-filter: 106px;
       padding: 0 0 0 5%;
       margin: 0 5%;
     }
-
-
-
   }
-
 
   .filter {
     position: relative;
@@ -92,13 +83,13 @@ $width-btn-filter: 106px;
 
     .form-select {
       position: relative;
-      width: calc(19% - 5px);
+      width: calc(33.33% - 5px);
       margin-left: 5px;
       float: right;
       @include borderRadius(5px);
 
       .form-group {
-        margin-bottom: 0
+        margin-bottom: 0;
       }
 
       input,
@@ -155,18 +146,16 @@ $width-btn-filter: 106px;
     }
 
     &.art {
-
-
       .form-select:nth-child(5) {
         width: calc(24% - 5px);
       }
 
       @include bp(upper1090max) {
-        .form-select{
+        .form-select {
           width: calc(33.33% - 5px);
           margin-bottom: 5px;
           &:nth-child(3) {
-           margin-left: 0;
+            margin-left: 0;
           }
           &:nth-child(5) {
             width: calc(66.66% - 5px);
@@ -177,12 +166,12 @@ $width-btn-filter: 106px;
           width: 180px;
         }
       }
-      @include bp(undertablet){
-        .form-select{
+      @include bp(undertablet) {
+        .form-select {
           width: calc(50% - 5px);
           margin-bottom: 5px;
           &:nth-child(3) {
-           margin-left: 5px;
+            margin-left: 5px;
           }
           &:nth-child(5) {
             width: calc(100% - 5px);
@@ -193,12 +182,12 @@ $width-btn-filter: 106px;
         }
       }
 
-      @include bp(mobile){
-        .form-select{
+      @include bp(mobile) {
+        .form-select {
           width: calc(100%);
           margin-bottom: 5px;
           &:nth-child(3) {
-           margin-left: 5px;
+            margin-left: 5px;
           }
           &:nth-child(5) {
             width: calc(100%);
@@ -210,7 +199,6 @@ $width-btn-filter: 106px;
       }
     }
 
-
     &.language {
       .form-select {
         width: calc(21% - 5px);
@@ -218,13 +206,8 @@ $width-btn-filter: 106px;
         &:nth-child(4) {
           width: calc(37% - 5px);
         }
-
       }
-
-
-
     }
-
 
     .btn {
       position: absolute;

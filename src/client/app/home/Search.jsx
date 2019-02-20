@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ArtMusic from "client/app/home/ArtMusic.jsx";
-import Language from "client/app/home/Language.jsx";
+import Category from "client/app/home/category.jsx";
 
 class Search extends Component {
   constructor(props) {
@@ -32,7 +31,7 @@ class Search extends Component {
     const { artMusicLoaded, languageLoaded } = this.state;
     return (
       <div className="home-search">
-        <div className="con">
+        {/* <div className="con">
           <div className="container-center">
             <div className="cat-list position-relative-margin">
               <ul className="category">
@@ -63,14 +62,10 @@ class Search extends Component {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="container-center">
-        <ArtMusic/>
-        {/* {artMusicLoaded ? <ArtMusic/> : null }
-          {languageLoaded ? <Language/> : null } */}
+          <Category />
         </div>
-
-      
       </div>
     );
   }

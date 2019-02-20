@@ -1,46 +1,4 @@
 {
-  "search": [
-    {
-      "id": "1",
-      "name": " آموزشگاه زبان سفیر"
-    },
-    {
-      "id": "2",
-      "name": "آموزشگاه زبان کبیر"
-    },
-    {
-      "id": "3",
-      "name": " آموزشگاه زبان آرام"
-    },
-    {
-      "id": "4",
-      "name": "آموزشگاه زبان سعادت"
-    },
-    {
-      "id": "5",
-      "name": "آموزشگاه زبان آکو"
-    }
-  ],
-  "category": [
-    {
-      "id": 5,
-      "title": "آموزشگاه",
-      "selected": false,
-      "key": "categoryList"
-    },
-    {
-      "id": 2,
-      "title": "سالن ورزشی",
-      "selected": false,
-      "key": "categoryList"
-    },
-    {
-      "id": 3,
-      "title": "مدارس",
-      "selected": false,
-      "key": "categoryList"
-    }
-  ],
   "cites": [
     {
       "id": 0,
@@ -79,40 +37,31 @@
       "key": "cityList"
     }
   ],
-  
-  "district": [
-    {
-      "id": 0,
-      "title": "صادقیه",
-      "selected": false,
-      "key": "districtList"
-    },
-    {
-      "id": 1,
-      "title": "سعادت آباد",
-      "selected": false,
-      "key": "districtList"
-    },
-    {
-      "id": 2,
-      "title": "مرزداران",
-      "selected": false,
-      "key": "districtList"
-    }
-  ],
-
-  "artmusiccategory": [
+  "category": [
     {
       "id": "1",
-      "title": "مبانی ترکیب بندی در عکاسی",
+      "title": "وب،‌ برنامه‌نویسی و نرم‌افزار",
       "selected": false,
-      "key": "artMusicCategoryList"
+      "key": "categoryList"
     },
     {
       "id": 2,
-      "title": "سفال و سرامیک",
+      "title": "طراح گرافیک",
       "selected": false,
-      "key": "artMusicCategoryList"
+      "key": "categoryList"
+    },
+    {
+      "id": 3,
+      "title": "فروش و بازاریابی",
+      "selected": false,
+      "key": "categoryList"
+    },
+
+    {
+      "id": 4,
+      "title": "حسابداری",
+      "selected": false,
+      "key": "categoryList"
     }
   ]
 }

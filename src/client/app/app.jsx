@@ -2,27 +2,34 @@ import React, { Component } from "react";
 import { Switch, Link, Route } from "react-router-dom";
 import RedirectWithStatus from "client/app/redirect-w-status.jsx";
 import routeOptions from "client/routes/routes";
-import {connect} from "react-redux"
-import PropTypes from 'prop-types'
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import Header from "client/app/layout/Header.jsx";
 import Footer from "client/app/layout/Footer.jsx";
-import { citesFetch } from 'src/redux/actions/cites-actions';
-import { districtFetch } from 'src/redux/actions/district-actions'
+// import store from "src/redux/store";
+
+// import { citesFetch } from "src/redux/actions/cites-actions";
+// import { districtFetch } from "src/redux/actions/district-actions";
 
 import "src/assets/sass/mian.scss";
 
 class App extends Component {
+  // static fetchData({ store }) {
+  //   return store.dispatch(citesFetch());
+  // }
   componentDidMount() {
-    this.props.citesFetch();
-    this.props.districtFetch();
+    // this.props.citesFetch();
+    // store.dispatch(citesFetch());
+    // this.props.districtFetch();
     this.getHeightWindow();
   }
   getHeightWindow() {
     let layout =
       document.getElementsByTagName("header")[0].offsetHeight -
       document.getElementsByTagName("footer")[0].offsetHeight;
-    document.getElementById("container-main").style.minHeight = (window.innerHeight + layout) + "px";
+    document.getElementById("container-main").style.minHeight =
+      window.innerHeight + layout + "px";
   }
   render() {
     let routes = routeOptions.routes.map(({ path, component, exact }, i) => (
@@ -57,8 +64,12 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  citesFetch : PropTypes.func.isRequired,
-  districtFetch : PropTypes.func.isRequired,
-}
-export default connect(null,{citesFetch,districtFetch})(App);
+// App.propTypes = {
+//   citesFetch: PropTypes.func.isRequired,
+//   districtFetch: PropTypes.func.isRequired
+// };
+// export default connect(
+//   null,
+//   { citesFetch, districtFetch }
+// )(App);
+export default App;
