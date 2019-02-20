@@ -77,7 +77,7 @@ class Header extends Component {
             </ul>
           </div>
 
-          <Link to="/" className="user-login">
+          <Link to="/user" className="user-login">
             <i className="k-user" />
             ورود یا ثبت نام
           </Link>
