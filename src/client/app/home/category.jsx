@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { bindActionCreators } from "redux";
-
 import SelectFieldGroup from "client/app/common/SelectFieldGroup";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
-import * as actions from "src/redux/actions/category-actions";
+import { getCategory } from "src/redux/actions/category-actions";
+import { getCites } from "src/redux/actions/cites-actions";
 
 class ArtMusic extends Component {
-  static fetchData({ store }) {
-    return store.dispatch(actions.getCategory());
-  }
+  // static fetchData({ store }) {
+  //   return store.dispatch(getCategory());
+  // }
   constructor(props) {
     super(props);
     this.state = {
@@ -48,6 +47,7 @@ class ArtMusic extends Component {
   }
   componentDidMount() {
     this.props.getCategory();
+    this.props.getCites();
   }
 
   // onChangeQ(e){
@@ -106,7 +106,6 @@ class ArtMusic extends Component {
       errors
     } = this.state;
     const { cites, category } = this.props;
-    const l = categoryList.map();
     return (
       <form className="filter art" onSubmit={this.onSubmit}>
         <div className="form-select">
@@ -158,12 +157,11 @@ const mapStateToProps = state => ({
   cites: state.cites,
   category: state.category
 });
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(actions, dispatch);
+// }
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-  null,
-  { withRef: true }
-)(ArtMusic);
+  // mapDispatchToProps,
+  { getCategory, getCites }
+)(withRouter(ArtMusic));
