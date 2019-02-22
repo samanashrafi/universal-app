@@ -6,11 +6,7 @@ import PageNotFound from "client/app/404.jsx";
 
 import AcademyList from "client/app/academylist/AcademyList.jsx";
 import Partners from "client/app/Partners.jsx";
-
-// const LoadableUser = Loadable({
-//     loader: () => import('client/app/user.jsx'),
-//     loading: <div>در حال بارگذاری</div>,
-//   });
+import LoginRegister from "client/app/user/Login-Register.jsx";
 
 export default {
   routes: [
@@ -27,6 +23,11 @@ export default {
     {
       path: "/partner",
       component: Partners,
+      exact: true
+    },
+    {
+      path: "/login-register",
+      component: LoginRegister,
       exact: true
     },
     {
