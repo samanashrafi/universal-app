@@ -127,7 +127,7 @@ class ArtMusic extends Component {
             state="categores"
             list={categoryList}
             toggleItem={this.toggleSelected}
-            icon={""}
+            icon={"k-bars"}
             error={errors.artMusicCategory}
             isLoaded={category.isLoaded}
           />
@@ -139,7 +139,7 @@ class ArtMusic extends Component {
             state="city"
             list={cityList}
             toggleItem={this.toggleSelected}
-            icon={""}
+            icon={"k-map-marker-alt"}
             error={errors.city}
             isLoaded={cites.isLoaded}
           />

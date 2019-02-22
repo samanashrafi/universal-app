@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logo from "src/assets/img/logo.png";
+import Modal from "src/client/app/common/Modal.js";
 
 class Header extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class Header extends Component {
             <i className="k-user" />
             ورود یا ثبت نام
           </Link>
+          {/* <Modal context={"sasasdasd"} /> */}
           <div className="select-city">تهران</div>
         </div>
       </header>
