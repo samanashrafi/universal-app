@@ -12,8 +12,24 @@ import { StaticRouter as Router, matchPath } from "react-router";
 import thunk from "src/redux/middleware/thunk";
 import routeBank from "client/routes/routes";
 
-app.use("/dist", express.static("./dist"));
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import passport from "passport";
 
+// route api
+const users = require("server/routes/api/users");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Password Middleware
+app.use(passport.initialize());
+
+// Password Config
+require("server/config/passport")(passport);
+
+//Use Routes
+app.use("/api/users", users);
+app.use("/dist", express.static("./dist"));
 app.get("*", async (req, res) => {
   try {
     //create new redux store on each request
@@ -65,6 +81,13 @@ app.get("*", async (req, res) => {
     res.status(400).send(renderFullPage("An error occured.", {}, {}));
   }
 });
+const db = require("server/config/keys.js").mongoURL;
+app.use("/dist", express.static("./dist"));
+// connect to MongoDB
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log("mongooDB Connected"))
+  .catch(err => console.log(err));
 
 const port = process.env.PORT || 9000;
 app.listen(port, function() {
