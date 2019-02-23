@@ -56,7 +56,7 @@ class Register extends Component {
         </Helmet>
         <div className="container-center">
           <div className="boxes">
-            <form className="form">
+            <form className="form" onSubmit={this.onSubmit}>
               <h2> عضویت</h2>
               <div className="welcom">
                 به <span className="color-primary bold">جاباینجا</span> خوش

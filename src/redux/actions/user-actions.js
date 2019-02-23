@@ -12,3 +12,5 @@ function getUserFromAPI(id) {
 }
 
 export function registerUser() {}
+
+export function loginUser() {}
