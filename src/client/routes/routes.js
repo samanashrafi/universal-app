@@ -6,7 +6,8 @@ import PageNotFound from "client/app/404.jsx";
 
 import AcademyList from "client/app/academylist/AcademyList.jsx";
 import Partners from "client/app/Partners.jsx";
-import LoginRegister from "client/app/user/Login-Register.jsx";
+import Login from "client/app/user/Login.jsx";
+import Register from "client/app/user/Register.jsx";
 
 export default {
   routes: [
@@ -26,8 +27,13 @@ export default {
       exact: true
     },
     {
-      path: "/login-register",
-      component: LoginRegister,
+      path: "/login",
+      component: Login,
+      exact: true
+    },
+    {
+      path: "/register",
+      component: Register,
       exact: true
     },
     {

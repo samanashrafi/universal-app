@@ -25,5 +25,18 @@
     .cover {
       background: #eee;
     }
+
+    .welcom {
+      margin-bottom: $margin-size;
+    }
+    .resetpassword {
+      color: $color-green;
+      margin: 10px 0;
+      float: right;
+    }
+    .reg-btn {
+      margin: 10px 0;
+      @include containerWidth();
+    }
   }
 }

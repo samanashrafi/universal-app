@@ -1,6 +1,7 @@
 .btn {
   background: $color-primary;
   padding: 8px 30px;
+  height: 38px;
   color: white;
   outline: none;
   border: none;
@@ -12,7 +13,11 @@
   font-weight: 600;
   @include borderRadius(5px);
   @include transition(0.3s);
-
+  &.border {
+    color: inherit;
+    background: inherit;
+    border: 1px solid $color-primary;
+  }
   &::before {
     content: "";
   }
@@ -24,10 +29,15 @@
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
     background: darkgray;
-    background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+    background: linear-gradient(
+      to right,
+      #eeeeee 10%,
+      #dddddd 18%,
+      #eeeeee 33%
+    );
     background-size: 800px 104px;
     height: 100px;
-    position: relative;
+    // position: relative;
     .text {
       top: -44px;
     }
