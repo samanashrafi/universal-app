@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import TextFieldGroup from "client/app/common/TextFieldGroup.js";
+import { registerUser } from "src/redux/actions/user-actions.js";
 
 class Register extends Component {
   constructor(props) {
@@ -13,10 +17,35 @@ class Register extends Component {
       errors: []
     };
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-
+  componentDidMount() {
+    //   const { auth,his } = this.props
+    //   if(isAuthenticated)
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
   onChange(e) {
     this.setState({ [e.target.name]: [e.target.value] });
+  }
+  onSubmit(e) {
+    e.preventDefualt();
+    const { name, email, password, repPassword } = this.state;
+    const newUser = {
+      name: name,
+      email: email,
+
+      password: password,
+      napasswordme2: repPassword
+    };
+
+    // this.props.registerUser(newUser);
   }
   render() {
     const { name, email, password, repPassword, errors } = this.state;
@@ -85,5 +114,17 @@ class Register extends Component {
     );
   }
 }
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.array.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.auth.errors
+});
 
-export default Register;
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));
