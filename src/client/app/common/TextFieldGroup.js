@@ -14,15 +14,18 @@ const TextFieldGroup = ({
   type,
   onChange,
   disabled,
-  autoComplete,
+  autoComplete
 }) => {
-  let emptyValue= value == "" ? "":" is-focus";
+  let emptyValue = value == "" ? "" : " is-focus";
 
   return (
     <div className="form-group">
-      <div className={ error ? "from-input error " + emptyValue: "from-input " + emptyValue}>
-        <i className={icon}>
-        </i>
+      <div
+        className={
+          error ? "from-input error " + emptyValue : "from-input " + emptyValue
+        }
+      >
+        <i className={icon} />
         <label className="label">{label}</label>
         <input
           name={name}
@@ -36,11 +39,9 @@ const TextFieldGroup = ({
           maxLength={maxLength}
           minLength={minLength}
           autoComplete={autoComplete}
-         
         />
         {/* {prefix ?
         <NumberFormat thousandSeparator={true} prefix={prefix} />:""} */}
-
       </div>
       {error && <label className="invalid-feedback">{error}</label>}
     </div>
@@ -61,7 +62,7 @@ TextFieldGroup.propTypes = {
 
 TextFieldGroup.defaultProps = {
   type: "text",
-  autoComplete:"off"
+  autoComplete: "off"
 };
 
 export default TextFieldGroup;
