@@ -5,6 +5,7 @@ const initialState = {
   email: null,
   isAuthenticated: false,
   user: {},
+  register: false,
   errors: {}
 };
 export default function userReducer(state = initialState, action) {
@@ -22,6 +23,15 @@ export default function userReducer(state = initialState, action) {
         ...state,
         isAuthenticated: true,
         user: action.payload,
+        errors: {}
+      };
+
+    case User.USERREGISTER_LOAD:
+      return { ...state, register: false };
+    case User.USERREGISTER_SUCCESS:
+      return {
+        ...state,
+        register: true,
         errors: {}
       };
     case User.USER_ERRORS:

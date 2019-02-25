@@ -2,6 +2,7 @@ import { Types } from "src/redux/constants/user-types";
 import { User } from "src/redux/constants/types";
 import { apiUrl } from "src/client/routes/apiUrl.js";
 import { setAuthToken } from "client/app/common/setAuthToken";
+import { addClassById, removeClassById } from "client/app/common/helpers";
 
 import jwt_decode from "jwt-decode";
 
@@ -17,11 +18,35 @@ function getUserFromAPI(id) {
   return Req.get(`https://jsonplaceholder.typicode.com/users/${id}`);
 }
 
-export function registerUser() {}
+export function registerUser(userData, history) {
+  return async function(dispatch) {
+    dispatch({
+      type: User.USERREGISTER_LOAD
+    });
+    await setUser(userData, history, dispatch);
+  };
+}
+
+function setUser(userData, history, dispatch) {
+  addClassById("btn-register", "clicked");
+
+  Req.post(apiUrl + "users/register", userData)
+    .then(() => {
+      history.push("/login");
+      dispatch({
+        type: User.USERREGISTER_SUCCESS
+      });
+    })
+    .catch(err => {
+      removeClassById("btn-register", "clicked");
+      dispatch({
+        type: User.USER_ERRORS,
+        payload: err.response.data
+      });
+    });
+}
 
 export function loginUser(userData) {
-  console.log("login user is done");
-
   return async function(dispatch) {
     dispatch({
       type: User.USERLOGIN_LOAD,
@@ -33,7 +58,6 @@ export function loginUser(userData) {
 
 function getUser(userData, dispatch) {
   // addClassById("btn-login", "clicked");
-  console.log("getUser");
 
   return Req.post(apiUrl + "users/login", userData)
     .then(res => {
