@@ -8,6 +8,7 @@ import AcademyList from "client/app/academylist/AcademyList.jsx";
 import Partners from "client/app/Partners.jsx";
 import Login from "client/app/user/Login.jsx";
 import Register from "client/app/user/Register.jsx";
+import Dashboard from "client/app/user/Dashboard.jsx";
 
 export default {
   routes: [
@@ -34,6 +35,11 @@ export default {
     {
       path: "/register",
       component: Register,
+      exact: true
+    },
+    {
+      path: "/dashboard",
+      component: Dashboard,
       exact: true
     },
     {
