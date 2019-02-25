@@ -1,18 +1,40 @@
 import React, { Component } from "react";
-import { Switch, Link, Route } from "react-router-dom";
 import RedirectWithStatus from "client/app/redirect-w-status.jsx";
 import routeOptions from "client/routes/routes";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import jwt_decode from "jwt-decode";
+import { Switch, Link, Route } from "react-router-dom";
 
+import { setAuthToken } from "client/app/common/setAuthToken";
+import { setCurrentUser, logoutUser } from "src/redux/actions/user-actions";
 import Header from "client/app/layout/Header.jsx";
 import Footer from "client/app/layout/Footer.jsx";
-// import store from "src/redux/store";
+import store from "src/redux/store";
 
 // import { citesFetch } from "src/redux/actions/cites-actions";
 // import { districtFetch } from "src/redux/actions/district-actions";
 
 import "src/assets/sass/mian.scss";
+const isBrowser = typeof localStorage !== "undefined";
+
+if (isBrowser) {
+  if (localStorage.jwtToken) {
+    // Set auth token header auth
+    setAuthToken(localStorage.jwtToken);
+    // Decode token and get user info and exp
+    const decoded = jwt_decode(localStorage.jwtToken);
+    // Set user and isAuthenticated
+    store.dispatch(setCurrentUser(decoded));
+
+    // Check for expired token
+    const currentTime = Date.now() / 1000;
+    if (decoded.exp < currentTime) {
+      // Logout user
+      store.dispatch(logoutUser());
+      // Redirect to login
+      window.location.href = "/login";
+    }
+  }
+}
 
 class App extends Component {
   // static fetchData({ store }) {

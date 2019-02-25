@@ -58,9 +58,7 @@ class Login extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    // debugger;
     let { email, password } = this.state;
-
     this.isEmpty(email, "email", "لطفا ایمیل خود را وارد فرمایید...");
     this.isEmpty(password, "password", "لطفا کلمه عبور خود را وارد فرمایید...");
     if (!isEmpty(email)) {
