@@ -120,7 +120,7 @@ class Login extends Component {
                 error={errors.password}
               />
 
-              <button className="btn">
+              <button id="btn-login" className="btn">
                 <div className="text">ورود </div>
                 <div className="spinners" />
               </button>

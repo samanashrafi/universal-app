@@ -57,7 +57,7 @@ export function loginUser(userData) {
 }
 
 function getUser(userData, dispatch) {
-  // addClassById("btn-login", "clicked");
+  addClassById("btn-login", "clicked");
 
   return Req.post(apiUrl + "users/login", userData)
     .then(res => {
@@ -73,7 +73,7 @@ function getUser(userData, dispatch) {
       dispatch(setCurrentUser(decoded));
     })
     .catch(err => {
-      // removeClassById("btn-login", "clicked");
+      removeClassById("btn-login", "clicked");
       dispatch({
         type: User.USER_ERRORS,
         payload: err.response.data
