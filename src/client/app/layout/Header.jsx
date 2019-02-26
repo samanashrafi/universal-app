@@ -18,6 +18,12 @@ class Header extends Component {
     this.onActiveUserNavbar = this.onActiveUserNavbar.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
   }
+  componentWillMount() {
+    const { auth } = this.props;
+    if (auth.isAuthenticated) {
+      this.setState({ auth: true });
+    }
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.setState({ auth: true });
