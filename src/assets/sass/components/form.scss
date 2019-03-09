@@ -134,9 +134,8 @@
 
     .header {
       position: absolute;
-      top: 15px;
+      top: 0px;
       right: 0px;
-      padding-right: 40px;
       outline: none;
       overflow: hidden;
       background: transparent;
@@ -145,8 +144,12 @@
       // font-weight: bold;
       @include transition(0.3s);
       @include containerWidth();
+      height: 48;
     }
-
+    input {
+      background: transparent;
+      padding: 14px 40px;
+    }
     &.error {
       border-right: 2px solid rgb(255, 73, 73);
       border-left: 2px solid rgb(255, 73, 73);

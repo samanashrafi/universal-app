@@ -89,7 +89,7 @@ class ArtMusic extends Component {
   filterText(filter) {
     return filter.replace(/ی/g, "ي").replace(/ک/g, "ك");
   }
-  toggleSelected(id, key, state) {
+  toggleSelected(id, key, state, filter) {
     var temp = this.state[key].map(obj => {
       var rObj = {};
       rObj["id"] = obj.id;
@@ -142,7 +142,7 @@ class ArtMusic extends Component {
             isLoaded={category.isLoaded}
           />
         </div>
-        <div className="form-select">
+        {/* <div className="form-select">
           <SelectFieldGroup
             title={city}
             headerDefalt={cityHeader}
@@ -153,7 +153,7 @@ class ArtMusic extends Component {
             error={errors.city}
             isLoaded={cites.isLoaded}
           />
-        </div>
+        </div> */}
 
         <button className="btn">
           <div className="text">جستجو</div>

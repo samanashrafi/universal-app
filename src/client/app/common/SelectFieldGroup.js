@@ -6,9 +6,10 @@ class SelectFieldGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listOpen: false
+      listOpen: false,
+      filter: ""
     };
-    // this.toggleItem = this.toggleItem.bind(this)
+    this.onChange = this.onChange.bind(this);
   }
   handleClickOutside() {
     this.setState({
@@ -19,6 +20,13 @@ class SelectFieldGroup extends Component {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
     }));
+  }
+
+  componentWillReceiveProps(next) {
+    this.setState({ filter: next.title });
+  }
+  onChange(e) {
+    this.setState({ filter: e.target.value });
   }
 
   render() {
@@ -32,10 +40,13 @@ class SelectFieldGroup extends Component {
       state,
       isLoaded
     } = this.props;
-    const { listOpen } = this.state;
+    const { listOpen, filter } = this.state;
     let emptyTitle = title == "" ? "" : " is-focus";
     let notAllowed = isLoaded ? "" : " c-not-allowed";
-
+    const filterList = list.filter(value => {
+      return value.title.search(filter) != -1;
+    });
+    console.log("filterList: ", filterList);
     return (
       <div className="form-group">
         <div
@@ -47,8 +58,16 @@ class SelectFieldGroup extends Component {
           onClick={() => this.toggleList()}
         >
           <i className={"i first-child " + icon} />
-          <div className={title == "" ? "header" : "header bold"}>
-            {title ? title : headerDefalt}
+          <div className={filter == "" ? "header" : "header bold"}>
+            <input
+              type="text"
+              name={title}
+              value={filter}
+              placeholder={headerDefalt}
+              onChange={this.onChange}
+              autoComplete="off"
+            />
+            {/* {title ? title : headerDefalt} */}
           </div>
           {isLoaded ? (
             <i
@@ -62,16 +81,15 @@ class SelectFieldGroup extends Component {
             <div className="spinners drop-down" />
           )}
 
-          { listOpen && (
+          {listOpen && (
             <ul className="list">
-              {list.map((item,n) => (
+              {filterList.map((item, n) => (
                 <li
                   className={item.selected ? "item active" : "item"}
                   key={item.title}
-                  onClick={() => toggleItem(n, item.key, state)}
+                  onClick={() => toggleItem(n, item.key, state, filterList)}
                 >
-                  {item.title}{" "}
-                  {item.selected && <i className="k-check-box" />}
+                  {item.title} {item.selected && <i className="k-check-box" />}
                 </li>
               ))}
             </ul>
