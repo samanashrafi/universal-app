@@ -34,16 +34,15 @@ class ArtMusic extends Component {
     const { cites, category } = nextProps;
     if (cites.isLoaded) {
       this.setState({
-        cityList: cites.list
+        cityList: this.parseList("cityList", cites.list)
       });
     }
 
     if (category.isLoaded) {
       this.setState({
-        categoryList: category.list
+        categoryList: this.parseList("categoryList", category.list)
       });
     }
-    console.log(nextProps);
   }
   componentDidMount() {
     this.props.getCategory();
@@ -75,6 +74,17 @@ class ArtMusic extends Component {
         this.refs.searchFilter.focus();
       }
     }
+  }
+  parseList(nameList, dataList) {
+    var temp = dataList.map(obj => {
+      var rObj = {};
+      rObj["id"] = obj._id;
+      rObj["title"] = obj.title;
+      rObj["selected"] = false;
+      rObj["key"] = nameList;
+      return rObj;
+    });
+    return temp;
   }
   filterText(filter) {
     return filter.replace(/ی/g, "ي").replace(/ک/g, "ك");
