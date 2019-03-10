@@ -7,9 +7,22 @@ class SelectFieldGroup extends Component {
     super(props);
     this.state = {
       listOpen: false,
+      list: [],
       filter: ""
     };
     this.onChange = this.onChange.bind(this);
+  }
+
+  clearList(nameList, dataList) {
+    var temp = dataList.map(obj => {
+      var rObj = {};
+      rObj["id"] = obj._id;
+      rObj["title"] = obj.title;
+      rObj["selected"] = false;
+      rObj["key"] = nameList;
+      return rObj;
+    });
+    return temp;
   }
   handleClickOutside() {
     this.setState({
@@ -23,15 +36,29 @@ class SelectFieldGroup extends Component {
   }
 
   componentWillReceiveProps(next) {
-    this.setState({ filter: next.title });
+    this.setState({ filter: next.title, list: next.list });
   }
+
   onChange(e) {
+    const { list } = this.props;
     this.setState({ filter: e.target.value });
+    if (this.refs.filterRef.value.length > 0) {
+      this.setState(state => {
+        // const list = state.list.map(item => item + 1);
+        const list = state.list.filter(value => {
+          return value.title.search(state.filter) != -1;
+        });
+        return {
+          list
+        };
+      });
+    } else {
+      this.setState({ list: this.clearList("list", list) });
+    }
   }
 
   render() {
     const {
-      list,
       icon,
       error,
       toggleItem,
@@ -40,13 +67,9 @@ class SelectFieldGroup extends Component {
       state,
       isLoaded
     } = this.props;
-    const { listOpen, filter } = this.state;
+    const { listOpen, list, filter } = this.state;
     let emptyTitle = title == "" ? "" : " is-focus";
     let notAllowed = isLoaded ? "" : " c-not-allowed";
-    const filterList = list.filter(value => {
-      return value.title.search(filter) != -1;
-    });
-    console.log("filterList: ", filterList);
     return (
       <div className="form-group">
         <div
@@ -63,11 +86,11 @@ class SelectFieldGroup extends Component {
               type="text"
               name={title}
               value={filter}
+              ref="filterRef"
               placeholder={headerDefalt}
               onChange={this.onChange}
               autoComplete="off"
             />
-            {/* {title ? title : headerDefalt} */}
           </div>
           {isLoaded ? (
             <i
@@ -83,11 +106,11 @@ class SelectFieldGroup extends Component {
 
           {listOpen && (
             <ul className="list">
-              {filterList.map((item, n) => (
+              {list.map((item, n) => (
                 <li
                   className={item.selected ? "item active" : "item"}
                   key={item.title}
-                  onClick={() => toggleItem(n, item.key, state, filterList)}
+                  onClick={() => toggleItem(n, item.key, state)}
                 >
                   {item.title} {item.selected && <i className="k-check-box" />}
                 </li>
