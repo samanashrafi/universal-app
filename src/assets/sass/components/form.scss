@@ -92,12 +92,10 @@
   .from-select {
     position: relative;
     // background: #f7f7f7;
-    padding: 24px 15px;
     border-right: 2px solid #eee;
     border-left: 2px solid #eee;
     border-bottom: 1px solid #f7f7f7;
-    cursor: pointer;
-
+    min-height: 49px;
     @include containerWidth();
     @include borderRadius(5px);
     @include transition(0.3s);
@@ -133,22 +131,40 @@
     }
 
     .header {
-      position: absolute;
-      top: 0px;
-      right: 0px;
       outline: none;
       overflow: hidden;
       background: transparent;
       border: none;
-
+      width: calc(100% - 80px);
+      margin: 0 40px;
       // font-weight: bold;
       @include transition(0.3s);
-      @include containerWidth();
-      height: 48;
+
+      .listHolder {
+        li {
+          position: relative;
+          background: #e0e0e0;
+          float: right;
+          padding: 5px;
+          margin: 10px 10px 0px 0px;
+          cursor: pointer;
+          @include borderRadius(5px);
+
+          span {
+            padding-right: 25px;
+          }
+          i {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: $icon-size;
+          }
+        }
+      }
     }
     input {
       background: transparent;
-      padding: 14px 40px;
+      padding: 14px 10px;
     }
     &.error {
       border-right: 2px solid rgb(255, 73, 73);
@@ -168,25 +184,21 @@
 
     .list {
       position: absolute;
-      top: 45px;
       right: -2px;
       z-index: 9999;
       background: #f7f7f7;
-      // background: #f7f7f7;
-      padding: 0px 40px;
-      padding-bottom: 10px;
       border: 2px solid #eee;
+      padding-bottom: 10px;
       border-top: none;
-      // font-weight: bold;
       width: calc(100% + 4px);
       max-height: 120px;
       float: right;
       overflow-x: auto;
 
       &::-webkit-scrollbar {
-        width: 12px;
+        width: 8px;
         /* for vertical scrollbars */
-        height: 12px;
+        height: 8px;
         /* for horizontal scrollbars */
       }
 
@@ -200,10 +212,14 @@
 
       @include borderRadius(0 0 5px 5px);
       @include transition(0.3s);
-
+      .not-found {
+        padding-right: 50px;
+      }
       .item {
         position: relative;
         margin-bottom: 5px;
+        padding-right: 50px;
+        cursor: pointer;
 
         &.active,
         &:hover {
