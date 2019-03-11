@@ -187,6 +187,9 @@ textarea::placeholder {
 .c-not-allowed {
   cursor: not-allowed !important;
 }
+.cursor-text {
+  cursor: text !important;
+}
 
 .spinners {
   display: inline-block;
