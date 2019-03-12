@@ -16,27 +16,19 @@ class MultiSelectFieldGroup extends Component {
     this.toggleMultiItem = this.toggleMultiItem.bind(this);
   }
 
-  clearList(nameList, dataList) {
-    var temp = dataList.map(obj => {
-      var rObj = {};
-      rObj["id"] = obj._id;
-      rObj["title"] = obj.title;
-      rObj["selected"] = false;
-      rObj["key"] = nameList;
-      return rObj;
-    });
-    return temp;
-  }
+  // close Dropdown list out side with onClickOutside (HOC)
   handleClickOutside() {
     this.setState({
       listOpen: false
     });
   }
+  // close Dropdown list with click in icon or text input
   toggleList() {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
     }));
   }
+  // checking if listOpen is fasle and then  Dropdown list it's be open (when use textbox search)
   checkListOpen() {
     const { listOpen } = this.state;
     if (!listOpen) {
@@ -45,6 +37,7 @@ class MultiSelectFieldGroup extends Component {
       });
     }
   }
+  // delect Items in listHolder and update  listCurrent & list
   delectItem(title) {
     this.setState(state => {
       const listCurrent = state.listCurrent.map((item, n) => {
@@ -60,12 +53,13 @@ class MultiSelectFieldGroup extends Component {
           return item;
         }
       });
-      const listSearch = Object.assign([{}], state.listCurrent);
-      const list = listSearch.filter((item, n) => {
+      const list = state.listCurrent.filter((item, n) => {
         if (item.selected === false) {
           return item;
         }
       });
+
+      // this.props.setList(listHolder);
 
       return {
         listCurrent,
@@ -76,7 +70,9 @@ class MultiSelectFieldGroup extends Component {
 
     this.refs.filterRef.focus();
   }
+
   toggleMultiItem(title) {
+    // add Items in listHolder and update  listCurrent & list
     this.setState(state => {
       const listCurrent = state.listCurrent.map((item, n) => {
         item.title === title ? (item.selected = true) : "";
@@ -85,6 +81,7 @@ class MultiSelectFieldGroup extends Component {
       const listHolder = state.listCurrent.filter(item => {
         return item.selected == true;
       });
+      // this.props.setList(setListHolder);
 
       const list = state.list;
       list.map((item, n) => {
@@ -103,6 +100,7 @@ class MultiSelectFieldGroup extends Component {
       };
     });
 
+    // update list when select item in listCurrent
     this.setState(state => {
       const list = state.listCurrent.filter(item => {
         if (item.selected === false) {
@@ -115,15 +113,37 @@ class MultiSelectFieldGroup extends Component {
     this.refs.filterRef.style.width = "90px";
     this.refs.filterRef.focus();
   }
-
+  // set all props we need control lists
   componentWillReceiveProps(next) {
     this.setState({
       filter: next.title,
       list: next.list,
-      listCurrent: next.list
+      listCurrent: next.list,
+      listHolder: next.listFetch
     });
+    // update  listCurrent when recive listFetch prop
+    if (this.state.listHolder.length > 0) {
+      this.setState(state => {
+        const listCurrent = state.list.map(item => {
+          const find = state.listHolder.findIndex(value => {
+            return value.title === item.title;
+          });
+          if (find != -1) {
+            item.selected = true;
+          }
+          return item;
+        });
+        const list = listCurrent.filter(item => {
+          return item.selected === false;
+        });
+        return {
+          listCurrent,
+          list
+        };
+      });
+    }
   }
-
+  // search list
   onChange(e) {
     const { style } = this.refs.filterRef;
     if (
@@ -134,6 +154,7 @@ class MultiSelectFieldGroup extends Component {
     }
 
     this.setState({ filter: e.target.value });
+    // reset list
     this.setState(state => {
       const list = state.listCurrent.map(item => {
         item.selected === false;
@@ -144,6 +165,7 @@ class MultiSelectFieldGroup extends Component {
       };
     });
     if (this.refs.filterRef.value.length > 0) {
+      //search list
       this.setState(state => {
         const list = state.list.filter(item => {
           if (item.title.search(state.filter) != -1) return item;
@@ -152,21 +174,22 @@ class MultiSelectFieldGroup extends Component {
           list
         };
       });
-    } else {
-      // debugger;
-      // this.setState({ list: this.clearList("list", this.state.listCurrent) });
     }
   }
 
   render() {
-    const { icon, error, title, headerDefault, state, isLoaded } = this.props;
+    const {
+      icon,
+      error,
+      title,
+      headerDefault,
+      state,
+      setList,
+      isLoaded
+    } = this.props;
     const { listOpen, list, listHolder, listCurrent, filter } = this.state;
     let emptyTitle = title == "" ? "" : " is-focus";
     let notAllowed = isLoaded ? "" : " c-not-allowed";
-
-    // const list = this.state.list.filter(item => {
-    //   return item.selected === false;
-    // });
     console.log("list: ", list);
     console.log("listCurrent: ", listCurrent);
     console.log("listHolder: ", listHolder);
@@ -228,7 +251,9 @@ class MultiSelectFieldGroup extends Component {
                     <li
                       className={item.selected ? "item active" : "item"}
                       key={item.title}
-                      onClick={() => this.toggleMultiItem(item.title)}
+                      onClick={() => {
+                        this.toggleMultiItem(item.title);
+                      }}
                     >
                       {item.title}{" "}
                       {item.selected && <i className="k-check-box" />}
@@ -249,4 +274,4 @@ class MultiSelectFieldGroup extends Component {
   }
 }
 
-export default onClickOutside(MultiSelectFieldGroup);
+export default MultiSelectFieldGroup;
