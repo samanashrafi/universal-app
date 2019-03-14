@@ -1,32 +1,48 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import SelectFieldGroup from "client/app/common/SelectFieldGroup";
+// import SelectFieldGroup from "client/app/common/SelectFieldGroup";
+import MultiSelectFieldGroup from "client/app/common/MultiSelectFieldGroup";
 import TextFieldGroup from "client/app/common/TextFieldGroup";
 import { getCategory } from "src/redux/actions/category-actions";
 import { getCites } from "src/redux/actions/cites-actions";
 
 class ArtMusic extends Component {
-  // static fetchData({ store }) {
-  //   return store.dispatch(getCategory());
-  // }
   constructor(props) {
     super(props);
     this.state = {
       text: "",
-      categores: "",
+      categores: [],
       categoryHeader: "دسته بندی",
       categoryList: [],
+      categoryListFetch: [
+        // {
+        //   id: "5c8771571de6f61ce87b319e",
+        //   title: "برنامه نویسی "
+        // },
+        // {
+        //   id: "5c8771ff1de6f61ce87b31a2",
+        //   title: "گراقیست"
+        // },
+        // {
+        //   id: "5c87726a1de6f61ce87b31a3",
+        //   title: "آموزش"
+        // },
+        // {
+        //   id: "5c8772871de6f61ce87b31a4",
+        //   title: "مدیر محصول"
+        // }
+      ],
       city: "",
       cityHeader: "شهر",
       cityList: [],
+      cityFetch: "",
       errors: [],
       input: 0
     };
     this.toggleSelected = this.toggleSelected.bind(this);
+    this.toggleMultiSelected = this.toggleMultiSelected.bind(this);
     this.onChange = this.onChange.bind(this);
-
-    //  this.onChangeQ = this.onChangeQ.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -34,13 +50,12 @@ class ArtMusic extends Component {
     const { cites, category } = nextProps;
     if (cites.isLoaded) {
       this.setState({
-        cityList: this.parseList("cityList", cites.list)
+        cityList: cites.list
       });
     }
-
     if (category.isLoaded) {
       this.setState({
-        categoryList: this.parseList("categoryList", category.list)
+        categoryList: category.list
       });
     }
   }
@@ -48,16 +63,6 @@ class ArtMusic extends Component {
     this.props.getCategory();
     this.props.getCites();
   }
-
-  // onChangeQ(e){
-  //   e.preventDefault();
-  //   this.setState({input:this.refs.searchFilter.value.length})
-  //   if(this.refs.searchFilter.value.length > 2){
-  //     this.props.searchFetch(this.filterText(this.refs.searchFilter.value));
-  //   }else{
-  //     this.refs.searchFilter.focus();
-  //   }
-  // }
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -65,43 +70,19 @@ class ArtMusic extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    if (this.refs.searchFilter.value.length == 0) {
-      this.refs.searchFilter.focus();
-    } else {
-      if (this.refs.searchFilter.value.length > 2) {
-        this.props.history.push(`/search?q=${this.refs.searchFilter.value}`);
-      } else {
-        this.refs.searchFilter.focus();
-      }
-    }
   }
-  parseList(nameList, dataList) {
-    var temp = dataList.map(obj => {
-      var rObj = {};
-      rObj["id"] = obj._id;
-      rObj["title"] = obj.title;
-      rObj["selected"] = false;
-      rObj["key"] = nameList;
-      return rObj;
-    });
-    return temp;
-  }
-  filterText(filter) {
-    return filter.replace(/ی/g, "ي").replace(/ک/g, "ك");
-  }
-  toggleSelected(id, key, state, filter) {
-    var temp = this.state[key].map(obj => {
-      var rObj = {};
-      rObj["id"] = obj.id;
-      rObj["title"] = obj.title;
-      rObj["selected"] = false;
-      rObj["key"] = obj.key;
-      return rObj;
-    });
-    temp[id].selected = !temp[id].selected;
+
+  toggleSelected(title, name) {
+    console.log(title, name);
     this.setState({
-      [key]: temp,
-      [state]: temp[id].title
+      [name]: title
+    });
+  }
+  toggleMultiSelected(list, name) {
+    console.log("categoresListHolder : ", list);
+    this.setState({
+      [name]: list,
+      listFetch: list
     });
   }
   render() {
@@ -110,9 +91,11 @@ class ArtMusic extends Component {
       categores,
       categoryHeader,
       categoryList,
+      categoryListFetch,
       city,
       cityHeader,
       cityList,
+      cityFetch,
       errors
     } = this.state;
     const { cites, category } = this.props;
@@ -129,31 +112,33 @@ class ArtMusic extends Component {
             icon={"k-edit"}
           />
         </div>
-
         <div className="form-select">
-          <SelectFieldGroup
+          <MultiSelectFieldGroup
             title={categores}
-            headerDefalt={categoryHeader}
-            state="categores"
+            name="categores"
+            headerDefault={categoryHeader}
             list={categoryList}
-            toggleItem={this.toggleSelected}
+            listFetch={categoryListFetch}
+            setList={this.toggleMultiSelected}
             icon={"k-bars"}
+            multi={true}
             error={errors.artMusicCategory}
             isLoaded={category.isLoaded}
           />
         </div>
-        {/* <div className="form-select">
-          <SelectFieldGroup
+        <div className="form-select">
+          <MultiSelectFieldGroup
             title={city}
-            headerDefalt={cityHeader}
-            state="city"
+            name={"city"}
+            headerDefault={cityHeader}
             list={cityList}
-            toggleItem={this.toggleSelected}
+            listFetch={cityFetch}
+            setList={this.toggleSelected}
             icon={"k-map-marker-alt"}
             error={errors.city}
             isLoaded={cites.isLoaded}
           />
-        </div> */}
+        </div>
 
         <button className="btn">
           <div className="text">جستجو</div>
@@ -167,11 +152,8 @@ const mapStateToProps = state => ({
   cites: state.cites,
   category: state.category
 });
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(actions, dispatch);
-// }
+
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
   { getCategory, getCites }
 )(withRouter(ArtMusic));
