@@ -122,6 +122,7 @@ class ArtMusic extends Component {
             setList={this.toggleMultiSelected}
             icon={"k-bars"}
             multi={true}
+            // field={"_id"}
             error={errors.artMusicCategory}
             isLoaded={category.isLoaded}
           />

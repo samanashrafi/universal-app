@@ -236,7 +236,6 @@ class MultiSelectFieldGroup extends Component {
       }
     }
   }
-  reserList() {}
   // search list
   onChange(e) {
     const { style } = this.refs.filterRef;
@@ -298,7 +297,15 @@ class MultiSelectFieldGroup extends Component {
   }
 
   render() {
-    const { icon, error, title, headerDefault, multi, isLoaded } = this.props;
+    const {
+      icon,
+      error,
+      title,
+      headerDefault,
+      multi,
+      field,
+      isLoaded
+    } = this.props;
     const { listOpen, list, listHolder, listCurrent, filter } = this.state;
     let emptyTitle = title == "" ? "" : " is-focus";
     let notAllowed = isLoaded ? "" : " c-not-allowed";
@@ -367,7 +374,7 @@ class MultiSelectFieldGroup extends Component {
                         key={item.title}
                         onClick={() => this.toggleMultiItem(item.title)}
                       >
-                        {item.title}{" "}
+                        {item.title} {field && "( " + item[field] + " )"}
                         {item.selected && <i className="k-check-box" />}
                       </li>
                     ) : (
