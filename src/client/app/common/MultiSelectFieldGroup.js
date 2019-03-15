@@ -48,13 +48,25 @@ class MultiSelectFieldGroup extends Component {
       });
     }
   }
+  // checking title list equal
+  checkTitleItem(title, list, selected) {
+    const result = list.map(item => {
+      item.title === title ? (item.selected = selected) : "";
+      return item;
+    });
+    return result;
+  }
+  // filter items if selected item is false or true
+  filterTitleItem(list, selected) {
+    const result = list.filter(item => {
+      return item.selected === selected;
+    });
+    return result;
+  }
   // delete Items in listHolder and update listCurrent & list (for Multi select)
   deleteItem(title) {
     this.setState(state => {
-      const listCurrent = state.listCurrent.map((item, n) => {
-        item.title === title ? (item.selected = false) : "";
-        return item;
-      });
+      const listCurrent = this.checkTitleItem(title, state.listCurrent, false);
 
       const listHolder = state.listHolder;
       listHolder.map((item, n) => {
@@ -64,11 +76,8 @@ class MultiSelectFieldGroup extends Component {
           return item;
         }
       });
-      const list = state.listCurrent.filter((item, n) => {
-        if (item.selected === false) {
-          return item;
-        }
-      });
+      const list = this.filterTitleItem(state.listCurrent, false);
+      this.props.setList(this.state.listHolder, this.props.name);
       return {
         listCurrent,
         listHolder,
@@ -82,13 +91,8 @@ class MultiSelectFieldGroup extends Component {
   toggleMultiItem(title) {
     // add Items in listHolder and update  listCurrent & list
     this.setState(state => {
-      const listCurrent = state.listCurrent.map((item, n) => {
-        item.title === title ? (item.selected = true) : "";
-        return item;
-      });
-      const listHolder = state.listCurrent.filter(item => {
-        return item.selected == true;
-      });
+      const listCurrent = this.checkTitleItem(title, state.listCurrent, true);
+      const listHolder = this.filterTitleItem(state.listCurrent, true);
       this.props.setList(listHolder, this.props.name);
 
       const list = state.list;
@@ -110,11 +114,7 @@ class MultiSelectFieldGroup extends Component {
 
     // update list when select item in listCurrent
     this.setState(state => {
-      const list = state.listCurrent.filter(item => {
-        if (item.selected === false) {
-          return item;
-        }
-      });
+      const list = this.filterTitleItem(state.listCurrent);
       return { list };
     });
 
@@ -123,7 +123,6 @@ class MultiSelectFieldGroup extends Component {
   }
   // add Items in listHolder and update listCurrent & list (for single select)
   toggleItem(title) {
-    // console.log("toggleItem select is worked");
     this.setState(state => {
       const list = state.listCurrent.map(item => {
         item.selected = false;
@@ -135,14 +134,8 @@ class MultiSelectFieldGroup extends Component {
     });
 
     this.setState(state => {
-      const listCurrent = state.listCurrent.map((item, n) => {
-        item.title === title ? (item.selected = true) : "";
-        return item;
-      });
-      const list = state.listCurrent.map((item, n) => {
-        item.title === title ? (item.selected = true) : "";
-        return item;
-      });
+      const listCurrent = this.checkTitleItem(title, state.listCurrent, true);
+      const list = this.checkTitleItem(title, state.listCurrent, true);
       this.props.setList(title, this.props.name);
       return {
         listCurrent,
@@ -181,9 +174,7 @@ class MultiSelectFieldGroup extends Component {
             }
             return item;
           });
-          const list = listCurrent.filter(item => {
-            return item.selected === false;
-          });
+          const list = this.filterTitleItem(listCurrent, false);
 
           return {
             listCurrent,
@@ -211,14 +202,9 @@ class MultiSelectFieldGroup extends Component {
           };
         });
         this.setState(state => {
-          const listCurrent = state.listCurrent.map((item, n) => {
-            item.title === checkTitle ? (item.selected = true) : "";
-            return item;
-          });
-          const list = state.listCurrent.map((item, n) => {
-            item.title === checkTitle ? (item.selected = true) : "";
-            return item;
-          });
+          const listCurrent = this.filterTitleItem(state.listCurrent, false);
+          const list = this.filterTitleItem(state.listCurrent, false);
+
           return {
             listCurrent,
             list,
@@ -227,23 +213,20 @@ class MultiSelectFieldGroup extends Component {
         });
       } else {
         this.setState(state => {
-          const list = state.listCurrent.map(item => {
-            item.selected = false;
-            return item;
-          });
+          const list = this.parseList(state.listCurrent);
+
           return {
             list
           };
         });
         this.setState(state => {
-          const listCurrent = state.listCurrent.map((item, n) => {
-            item.title === checkTitle ? (item.selected = true) : "";
-            return item;
-          });
-          const list = state.listCurrent.map((item, n) => {
-            item.title === checkTitle ? (item.selected = true) : "";
-            return item;
-          });
+          const listCurrent = this.checkTitleItem(
+            checkTitle,
+            state.listCurrent,
+            true
+          );
+          const list = this.checkTitleItem(checkTitle, state.listCurrent, true);
+
           return {
             listCurrent,
             list,
@@ -290,7 +273,6 @@ class MultiSelectFieldGroup extends Component {
         });
       }
     } else {
-      console.log("single select is worked");
       this.setState(state => {
         const list = state.listCurrent.map(item => {
           item.selected === false;
