@@ -40,7 +40,11 @@ module.exports = {
             loader: "babel-loader",
             options: {
               presets: ["es2015", "react"],
-              plugins: ["transform-object-rest-spread", "async-to-promises"]
+              plugins: [
+                "transform-object-rest-spread",
+                "async-to-promises",
+                "babel-plugin-transform-class-properties"
+              ]
             }
           }
         ]
