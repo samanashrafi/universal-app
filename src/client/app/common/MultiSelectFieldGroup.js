@@ -310,9 +310,9 @@ class MultiSelectFieldGroup extends Component {
     let emptyTitle = title == "" ? "" : " is-focus";
     let notAllowed = isLoaded ? "" : " c-not-allowed";
 
-    console.log("list: ", list);
-    console.log("listCurrent: ", listCurrent);
-    console.log("listHolder: ", listHolder);
+    // console.log("list: ", list);
+    // console.log("listCurrent: ", listCurrent);
+    // console.log("listHolder: ", listHolder);
 
     return (
       <div className="form-group">

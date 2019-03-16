@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
- import Search from "src/client/app/home/Search.jsx";
-
+import Search from "src/client/app/home/Search.jsx";
+import IntegrationDownshift from "src/client/app/home/IntegrationDownshift.jsx";
 class Home extends Component {
   static fetchData({ store }) {
     return new Promise(resolve => resolve()); //default
@@ -14,6 +14,7 @@ class Home extends Component {
           <title>Home</title>
         </Helmet>
         <Search />
+        <IntegrationDownshift />
       </div>
     );
   }
