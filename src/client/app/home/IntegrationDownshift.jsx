@@ -4,68 +4,67 @@ import deburr from "lodash/deburr";
 import Downshift from "downshift";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Popper from "@material-ui/core/Popper";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import Chip from "@material-ui/core/Chip";
 
-// const suggestions = [
-//   { label: "تهران" },
-//   { label: "کرج" },
-//   { label: "مهران" },
-//   { label: "اصفهان" },
-//   { label: "ساری" },
-//   { label: "سنندح" },
-//   { label: "کرمان" },
-//   { label: "قم" },
-//   { label: "یزد" },
-//   { label: "آبادان" },
-//   { label: "اهواز" },
-//   { label: "بوشهر" },
-//   { label: "گرگان" },
-//   { label: "تبریز" },
-//   { label: "مهاباد" },
-//   { label: "مشهد" },
-//   { label: "فارس" },
-//   { label: "بناب" }
-// ];
-
 const suggestions = [
-  { label: "Afghanistan" },
-  { label: "Aland Islands" },
-  { label: "Albania" },
-  { label: "Algeria" },
-  { label: "American Samoa" },
-  { label: "Andorra" },
-  { label: "Angola" },
-  { label: "Anguilla" },
-  { label: "Antarctica" },
-  { label: "Antigua and Barbuda" },
-  { label: "Argentina" },
-  { label: "Armenia" },
-  { label: "Aruba" },
-  { label: "Australia" },
-  { label: "Austria" },
-  { label: "Azerbaijan" },
-  { label: "Bahamas" },
-  { label: "Bahrain" },
-  { label: "Bangladesh" },
-  { label: "Barbados" },
-  { label: "Belarus" },
-  { label: "Belgium" },
-  { label: "Belize" },
-  { label: "Benin" },
-  { label: "Bermuda" },
-  { label: "Bhutan" },
-  { label: "Bolivia, Plurinational State of" },
-  { label: "Bonaire, Sint Eustatius and Saba" },
-  { label: "Bosnia and Herzegovina" },
-  { label: "Botswana" },
-  { label: "Bouvet Island" },
-  { label: "Brazil" },
-  { label: "British Indian Ocean Territory" },
-  { label: "Brunei Darussalam" }
+  { label: "تهران" },
+  { label: "کرج" },
+  { label: "مهران" },
+  { label: "اصفهان" },
+  { label: "ساری" },
+  { label: "سنندح" },
+  { label: "کرمان" },
+  { label: "قم" },
+  { label: "یزد" },
+  { label: "آبادان" },
+  { label: "اهواز" },
+  { label: "بوشهر" },
+  { label: "گرگان" },
+  { label: "تبریز" },
+  { label: "مهاباد" },
+  { label: "مشهد" },
+  { label: "فارس" },
+  { label: "بناب" }
 ];
+
+// const suggestions = [
+//   { label: "Afghanistan" },
+//   { label: "Aland Islands" },
+//   { label: "Albania" },
+//   { label: "Algeria" },
+//   { label: "American Samoa" },
+//   { label: "Andorra" },
+//   { label: "Angola" },
+//   { label: "Anguilla" },
+//   { label: "Antarctica" },
+//   { label: "Antigua and Barbuda" },
+//   { label: "Argentina" },
+//   { label: "Armenia" },
+//   { label: "Aruba" },
+//   { label: "Australia" },
+//   { label: "Austria" },
+//   { label: "Azerbaijan" },
+//   { label: "Bahamas" },
+//   { label: "Bahrain" },
+//   { label: "Bangladesh" },
+//   { label: "Barbados" },
+//   { label: "Belarus" },
+//   { label: "Belgium" },
+//   { label: "Belize" },
+//   { label: "Benin" },
+//   { label: "Bermuda" },
+//   { label: "Bhutan" },
+//   { label: "Bolivia, Plurinational State of" },
+//   { label: "Bonaire, Sint Eustatius and Saba" },
+//   { label: "Bosnia and Herzegovina" },
+//   { label: "Botswana" },
+//   { label: "Bouvet Island" },
+//   { label: "Brazil" },
+//   { label: "British Indian Ocean Territory" },
+//   { label: "Brunei Darussalam" }
+// ];
 function renderInput(inputProps) {
   const { InputProps, classes, ref, ...other } = inputProps;
 
@@ -120,44 +119,30 @@ renderSuggestion.propTypes = {
 function getSuggestions(value, selectedItem) {
   const inputValue = deburr(value.trim()).toLowerCase();
   const inputLength = inputValue.length;
+  let count = 0;
   console.log("selectedItem: ", selectedItem);
   if (inputLength === 0) {
     return [];
   }
-  // debugger;
-  const listFilter = suggestions.filter(item => {
-    let lower = item.label.toLowerCase();
-    const find = selectedItem.findIndex(val => {
-      return val == lower;
-    });
-    if (find == -1) {
+
+  const suggestionX = [];
+  suggestions.forEach(s => {
+    const isExist = selectedItem
+      .map(si => si.toLowerCase())
+      .includes(s.label.toLowerCase());
+
+    if (!isExist) suggestionX.push(s);
+  });
+
+  const result = suggestionX.filter(item => {
+    const keep = count < 5 && item.label.toLowerCase().includes(inputValue);
+    if (keep) {
+      count += 1;
       return item;
     }
   });
 
-  const result = listFilter.filter(suggestion => {
-    let lower = suggestion.label.toLowerCase();
-    if (lower.search(value) != -1) return suggestion;
-  });
-
   return result.length == 0 ? [{ label: "هیچ آیتمی پیدا نشد..." }] : result;
-
-  // const inputValue = deburr(value.trim()).toLowerCase();
-  // const inputLength = inputValue.length;
-  // let count = 0;
-
-  // return inputLength === 0
-  //   ? []
-  //   : suggestions.filter(suggestion => {
-  //       const keep =
-  //         count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
-
-  //       if (keep) {
-  //         count += 1;
-  //       }
-
-  //       return keep;
-  //     });
 }
 
 class DownshiftMultiple extends React.Component {
@@ -351,56 +336,6 @@ function IntegrationDownshift(props) {
       </Downshift>
       <div className={classes.divider} />
       <DownshiftMultiple classes={classes} />
-      <div className={classes.divider} />
-      <Downshift id="downshift-popper">
-        {({
-          getInputProps,
-          getItemProps,
-          getMenuProps,
-          highlightedIndex,
-          inputValue,
-          isOpen,
-          selectedItem
-        }) => (
-          <div className={classes.container}>
-            {renderInput({
-              fullWidth: true,
-              classes,
-              InputProps: getInputProps({
-                placeholder: "With Popper"
-              }),
-              ref: node => {
-                popperNode = node;
-              }
-            })}
-            <Popper open={isOpen} anchorEl={popperNode}>
-              <div
-                {...(isOpen
-                  ? getMenuProps({}, { suppressRefError: true })
-                  : {})}
-              >
-                <Paper
-                  square
-                  style={{
-                    marginTop: 8,
-                    width: popperNode ? popperNode.clientWidth : null
-                  }}
-                >
-                  {getSuggestions(inputValue).map((suggestion, index) =>
-                    renderSuggestion({
-                      suggestion,
-                      index,
-                      itemProps: getItemProps({ item: suggestion.label }),
-                      highlightedIndex,
-                      selectedItem
-                    })
-                  )}
-                </Paper>
-              </div>
-            </Popper>
-          </div>
-        )}
-      </Downshift>
     </div>
   );
 }
