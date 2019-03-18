@@ -45,7 +45,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.16.2",
+    "classnames": "^2.2.6",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.7.0",
@@ -69,6 +71,7 @@
     "react-onclickoutside": "^6.7.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.0.0",
+    "react-select": "^2.4.2",
     "redux": "^3.6.0",
     "sweetalert": "^2.1.2",
     "validator": "^10.11.0",
