@@ -120,16 +120,15 @@ function getSuggestions(value, selectedItem) {
   const inputValue = deburr(value.trim()).toLowerCase();
   const inputLength = inputValue.length;
   let count = 0;
-  console.log("selectedItem: ", selectedItem);
   if (inputLength === 0) {
     return [];
   }
 
   const suggestionX = [];
   suggestions.forEach(s => {
-    const isExist = selectedItem
-      .map(si => si.toLowerCase())
-      .includes(s.label.toLowerCase());
+    const isExist =
+      selectedItem &&
+      selectedItem.map(si => si.toLowerCase()).includes(s.label.toLowerCase());
 
     if (!isExist) suggestionX.push(s);
   });
@@ -151,7 +150,8 @@ class DownshiftMultiple extends React.Component {
     this.state = {
       inputValue: "",
       selectedItem: [],
-      openList: false
+      autoSugg: false,
+      multi: false
     };
   }
 
