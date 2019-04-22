@@ -9,7 +9,7 @@ import Partners from "client/app/Partners.jsx";
 import Login from "client/app/user/Login.jsx";
 import Register from "client/app/user/Register.jsx";
 import Dashboard from "client/app/user/Dashboard.jsx";
-import DropDownCustome from "client/app/Task/DropDownCustome.jsx";
+import Task from "client/app/Task/Task.jsx";
 export default {
   routes: [
     {
@@ -44,7 +44,7 @@ export default {
     },
     {
       path: "/Task",
-      component: DropDownCustome,
+      component: Task,
       exact: true
     },
     {

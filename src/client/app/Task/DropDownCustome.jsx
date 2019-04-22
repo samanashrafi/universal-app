@@ -100,7 +100,7 @@ class MultipleSelect extends React.Component {
     const { classes } = this.props;
     console.log(multi);
     return (
-      <div className={classes.root + " container-center"}>
+      <div className={classes.root}>
         {/* <div onClick={this.Multi}>multi</div> */}
 
         {/* <FormControl className={classes.formControl}>
